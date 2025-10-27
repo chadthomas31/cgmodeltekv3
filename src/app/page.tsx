@@ -2,69 +2,41 @@ import { FxHero } from "@/components/sections/FxHero";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black">
       <FxHero
-        eyebrow="CG model Tek"
+        eyebrow="CG Model Tek"
         title="Precision Engineering & Digital Modeling — From Concept to Reality"
         cards={[
           {
             title: "About Us",
-            description: "Learn about our team and story",
-            href: "#about",
-            cta: "Explore",
-            colorClass: "bg-yellow-400 text-black",
+            description: "Discover our expertise in precision engineering and advanced modeling",
+            href: "/about",
+            cta: "Learn More",
+            colorClass: "bg-gradient-to-br from-amber-400 via-yellow-400 to-amber-500 text-black",
           },
           {
             title: "Services",
-            description: "What we offer to help you succeed",
-            href: "#services",
+            description: "CAD modeling, rapid prototyping, FEA/CFD, and digital twin solutions",
+            href: "/services",
             cta: "Explore",
-            colorClass: "bg-slate-600 text-white",
+            colorClass: "bg-gradient-to-br from-cyan-400 via-cyan-500 to-blue-500 text-black",
           },
           {
             title: "Industries",
-            description: "Sectors we serve and specialize in",
-            href: "#industries",
-            cta: "Explore",
-            colorClass: "bg-indigo-700 text-white",
+            description: "Aerospace, defense, space systems, and precision manufacturing",
+            href: "/industries",
+            cta: "View More",
+            colorClass: "bg-gradient-to-br from-purple-500 via-fuchsia-500 to-purple-600 text-white",
           },
           {
             title: "Contact Us",
-            description: "Get in touch for quotes and questions",
-            href: "#contact",
-            cta: "Contact",
-            colorClass: "bg-purple-700 text-white",
+            description: "Ready to transform your vision into reality? Let's collaborate",
+            href: "/contact",
+            cta: "Get Started",
+            colorClass: "bg-gradient-to-br from-rose-800 via-rose-900 to-red-950 text-white",
           },
         ]}
       />
-      {/* Anchor sections for smooth in-page navigation */}
-      <section id="about" className="scroll-anchor-offset container mx-auto px-4 py-16 md:py-24">
-        <h2 className="headline-2 underbar">About Us</h2>
-        <p className="mt-4 text-muted-foreground max-w-prose">
-          We combine precision engineering with advanced digital modeling to accelerate aerospace innovation.
-        </p>
-      </section>
-
-      <section id="services" className="scroll-anchor-offset container mx-auto px-4 py-16 md:py-24">
-        <h2 className="headline-2 underbar">Services</h2>
-        <p className="mt-4 text-muted-foreground max-w-prose">
-          CAD modeling, rapid prototyping, FEA/CFD, digital twins, and manufacturing enablement.
-        </p>
-      </section>
-
-      <section id="industries" className="scroll-anchor-offset container mx-auto px-4 py-16 md:py-24">
-        <h2 className="headline-2 underbar">Industries</h2>
-        <p className="mt-4 text-muted-foreground max-w-prose">
-          Aerospace, defense, space systems, and high-precision industrial applications.
-        </p>
-      </section>
-
-      <section id="contact" className="scroll-anchor-offset container mx-auto px-4 py-16 md:py-24">
-        <h2 className="headline-2 underbar">Contact Us</h2>
-        <p className="mt-4 text-muted-foreground max-w-prose">
-          Ready to discuss your project? Reach out for quotes and collaboration.
-        </p>
-      </section>
     </main>
   );
 }
