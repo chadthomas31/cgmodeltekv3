@@ -1,8 +1,69 @@
+import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Accordion } from "@/components/ui/accordion";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Services | cgmodeltek",
+  description: "Explore cgmodeltek services: milling, turning, multi-axis, prototyping, production, finishing.",
+};
+
 export default function Page() {
   return (
-    <section className="container mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold" style={{ fontFamily: 'var(--font-outfit)' }}>Services</h1>
-      <p className="mt-4 text-muted-foreground">What we offer at cgmodeltek.</p>
-    </section>
+    <div className="container mx-auto px-4 py-12">
+      <Breadcrumbs
+        className="mb-6"
+        segments={[
+          { href: "/", label: "Home" },
+          { href: "/services", label: "Services" },
+        ]}
+      />
+      <h1 className="headline-1">Services</h1>
+      <p className="mt-4 max-w-2xl text-muted-foreground">
+        Precision capabilities from prototype to production. See process details and standards below.
+      </p>
+
+      <section className="mt-10 grid items-center gap-8 md:grid-cols-2">
+        <div className="space-y-4">
+          <h2 className="headline-2">Capability, documented</h2>
+          <p className="text-muted-foreground">
+            Our programming, fixturing, and inspection plans are built for repeatability and scale.
+          </p>
+        </div>
+        <div className="aspect-video w-full rounded-lg border bg-muted/40" />
+      </section>
+
+      <section className="mt-12 rounded-lg border bg-primary/5 p-6">
+        <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div>
+            <h3 className="headline-3">Have a model ready?</h3>
+            <p className="text-sm text-muted-foreground">Share your part and required quantities.</p>
+          </div>
+          <Link href="/contact" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">
+            Request a Quote
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {["milling","turning","multi-axis","prototyping","production","finishing"].map((s) => (
+          <Link key={s} href={`/services/${s}`} className="rounded-md border p-4 hover:bg-muted/60 capitalize">
+            {s.replace("-"," ")}
+          </Link>
+        ))}
+      </section>
+
+      <section className="mt-12">
+        <h3 className="headline-3">FAQ</h3>
+        <div className="mt-4">
+          <Accordion
+            items={[
+              { id: "min", title: "Min/Max volumes?", content: "From 1 to thousands, with scheduling options." },
+              { id: "qa", title: "Quality?", content: "In-process checks, CMM, and lot traceability available." },
+            ]}
+          />
+        </div>
+      </section>
+    </div>
   );
 }

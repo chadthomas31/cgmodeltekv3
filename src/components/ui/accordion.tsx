@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 
 type Item = { id: string; title: string; content: React.ReactNode };

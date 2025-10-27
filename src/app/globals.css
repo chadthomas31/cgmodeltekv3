@@ -1,10 +1,47 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #f5f5f5;
-  --border: #e5e5e5;
+  --muted: oklch(0.97 0 0);
+  --border: oklch(0.922 0 0);
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  /* Primary: industrial slate/steel */
+  --primary: #1F2937; /* slate-800 */
+  --primary-foreground: #F9FAFB; /* on-slate white */
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  /* Accent: cyan/teal line color */
+  --accent: #06B6D4; /* teal-500 */
+  --accent-foreground: #062028; /* deep teal on accent */
+  --destructive: oklch(0.577 0.245 27.325);
+  --input: oklch(0.922 0 0);
+  /* High-contrast focus ring */
+  --ring: #22D3EE; /* cyan-400 */
+  --paper: #f3f4f6;
+  --grid-line: #e5e7eb;
+  --grid-bold: #d1d5db;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 @theme inline {
@@ -14,22 +51,152 @@
   --color-border: var(--border);
   --color-card: var(--background);
   --color-popover: var(--background);
-  --color-primary: #111827;
-  --color-primary-foreground: #ffffff;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --font-sans: var(--font-inter);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card-foreground: var(--card-foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --muted: #111111;
-  --border: #1f1f1f;
-  --color-primary: #f9fafb;
-  --color-primary-foreground: #0b0b0b;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --border: oklch(1 0 0 / 10%);
+  /* Keep primary slate sense in dark while ensuring contrast */
+  --color-primary: #E5E7EB; /* slate-200 */
+  --color-primary-foreground: #111827; /* slate-900 */
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #CBD5E1; /* slate-300 */
+  --primary-foreground: #0B1220; /* deep slate */
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: #06B6D4; /* stable cyan accent in dark */
+  --accent-foreground: #062028;
+  --destructive: oklch(0.704 0.191 22.216);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #22D3EE;
+  --paper: #0f172a;
+  --grid-line: rgba(255,255,255,0.06);
+  --grid-bold: rgba(255,255,255,0.12);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Utilities: industrial headlines, underbar, hero overlays, focus ring, reduced motion */
+@layer utilities {
+  /* Offset for sticky header when using in-page anchors */
+  .scroll-anchor-offset { scroll-margin-top: 4rem; }
+  /* Headline sizes using Outfit */
+  .headline-1 { font-family: var(--font-outfit); font-weight: 700; letter-spacing: -0.02em; font-size: clamp(2.25rem, 2vw + 1.5rem, 3.5rem); line-height: 1.1; }
+  .headline-2 { font-family: var(--font-outfit); font-weight: 700; letter-spacing: -0.02em; font-size: clamp(1.875rem, 1.2vw + 1.25rem, 2.5rem); line-height: 1.15; }
+  .headline-3 { font-family: var(--font-outfit); font-weight: 700; letter-spacing: -0.015em; font-size: clamp(1.5rem, 1vw + 1rem, 2rem); line-height: 1.2; }
+
+  /* Underbar accent (2px cyan bar) */
+  .underbar { position: relative; padding-bottom: 0.5rem; }
+  .underbar::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 3.5rem; background-color: var(--color-accent); border-radius: 9999px; }
+
+  /* Hero overlays: subtle slate gradient for imagery */
+  .hero-overlay { background-image: linear-gradient(to bottom, color-mix(in srgb, var(--primary) 65%, transparent), color-mix(in srgb, var(--primary) 35%, transparent)); }
+  .hero-overlay-angled { background-image: linear-gradient(145deg, color-mix(in srgb, var(--primary) 55%, transparent) 0%, transparent 55%), linear-gradient(to bottom, color-mix(in srgb, var(--primary) 45%, transparent), transparent); }
+
+  /* High-contrast focus ring utility */
+  .focus-ring { outline: 3px solid var(--color-ring); outline-offset: 3px; }
+  .focus-ring:focus-visible { outline: 3px solid var(--color-ring); outline-offset: 3px; }
+
+  .bg-schematic {
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(var(--grid-bold) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px);
+    background-size:
+      24px 24px,
+      24px 24px,
+      120px 120px,
+      120px 120px;
+    background-position:
+      0 0,
+      0 0,
+      -1px -1px,
+      -1px -1px;
+  }
+
+  .bg-schematic-dots {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, var(--grid-line) 1px, transparent 0),
+      radial-gradient(circle at 1px 1px, var(--grid-bold) 1px, transparent 0);
+    background-size: 24px 24px, 120px 120px;
+  }
+
+  .bg-schematic-vignette {
+    position: relative;
+  }
+  .bg-schematic-vignette::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.12) 100%);
+  }
+}
+
+/* Reduced motion preference: disable animations/transitions globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }
