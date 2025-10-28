@@ -28,20 +28,20 @@ export default function Home() {
         cards={[
           {
             title: "About Us",
-            description: "Discover our expertise in precision engineering and advanced modeling",
+            description: "Engineers. Innovators. Makers. At CG Model Tek, precision isn’t a goal — it’s our foundation. From aerospace models to complex CNC components, our team transforms ideas into flight-ready reality.",
             href: "/about",
             cta: "Learn more",
             colorClass: "text-white/95",
-            imageSrc: "/images/about_us.png",
+            imageSrc: "/images/about_us_v2.png",
             imageAlt: "About Us card background",
           },
           {
             title: "Services",
-            description: "End-to-end aerospace design, simulation, and modeling",
+            description: "From concept design to final machining — we deliver complete precision manufacturing solutions. CNC Milling · Turning · Rapid Prototyping · 3D Modeling · Surface Finishing · Assembly",
             href: "/services",
             cta: "Explore services",
             colorClass: "text-white/95",
-            imageSrc: "/images/services-hero.png",
+            imageSrc: "/images/services-hero_v2.png",
             imageAlt: "Aerospace schematics and robotic arm",
           },
           {
@@ -50,6 +50,8 @@ export default function Home() {
             href: "/industries",
             cta: "View more",
             colorClass: "bg-gradient-to-br from-purple-500 via-fuchsia-500 to-purple-600 text-white",
+            imageSrc: "/images/Industries_v2.png",
+            imageAlt: "Industries card background",
           },
           {
             title: "Contact Us",

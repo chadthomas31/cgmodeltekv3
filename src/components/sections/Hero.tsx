@@ -11,6 +11,7 @@ export function Hero({
   titleClassName,
   overlayClassName,
   className = "",
+  contentPosition = "center",
 }: {
   title: string;
   subtitle?: string;
@@ -20,6 +21,7 @@ export function Hero({
   titleClassName?: string;
   overlayClassName?: string;
   className?: string;
+  contentPosition?: "center" | "bottom";
 }) {
   return (
     <section className={cn("relative isolate overflow-hidden", className)} aria-label="Hero">
@@ -34,11 +36,17 @@ export function Hero({
           fetchPriority="high"
         />
         <div className={cn(overlayClassName ?? "hero-overlay", "absolute inset-0")} />
+        {contentPosition === "bottom" && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+        )}
       </div>
 
-      <div className="container mx-auto grid min-h-[72svh] items-center px-4 py-16 md:py-24 lg:min-h-[78svh]">
-        <div className="max-w-2xl">
-          <h1 className={cn(titleClassName ?? "headline-1", "text-foreground")}>
+      <div className={cn(
+        "container mx-auto grid min-h-[72svh] px-4 py-16 md:py-24 lg:min-h-[78svh]",
+        contentPosition === "bottom" ? "items-end" : "items-center"
+      )}>
+        <div className={cn("max-w-2xl", contentPosition === "bottom" && "rounded-xl border border-white/10 bg-black/45 p-4 backdrop-blur-sm") }>
+          <h1 className={cn(titleClassName ?? "headline-1", "text-foreground") }>
             {title}
           </h1>
           {subtitle && (

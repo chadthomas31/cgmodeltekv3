@@ -43,9 +43,13 @@ export function FxHero({
       { label: "FEA / CFD", href: "/services#analysis" },
     ],
     Industries: [
-      { label: "Aerospace", href: "/industries/aerospace" },
-      { label: "Defense", href: "/industries#defense" },
-      { label: "Manufacturing", href: "/industries#manufacturing" },
+      { label: "Aerospace & Defense", href: "/industries/aerospace" },
+      { label: "Automotive", href: "/industries/automotive" },
+      { label: "Food & Beverage", href: "/industries/consumer" },
+      { label: "Packaging", href: "/industries/consumer" },
+      { label: "Medical", href: "/industries/medical" },
+      { label: "Oil and Energy", href: "/industries/energy" },
+      { label: "OEM & Other Industries", href: "/industries" },
     ],
     "Contact Us": [
       { label: "Request Quote", href: "/contact#quote" },
@@ -105,15 +109,13 @@ export function FxHero({
                   priority={false}
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-              <div className="flex h-full flex-col justify-between p-6 sm:p-8">
-                <div className="flex-1" />
-
-                <div className="space-y-3">
-                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">{card.title}</h3>
+              <div className="flex h-full flex-col justify-end p-6 sm:p-8">
+                <div className="space-y-3 rounded-xl bg-black/45 backdrop-blur-sm p-4 sm:p-5 border border-white/10">
+                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight drop-shadow-md">{card.title}</h3>
                   {card.description && (
-                    <p className="text-sm sm:text-base opacity-90 max-w-[36ch]">{card.description}</p>
+                    <p className="text-sm sm:text-base opacity-95 max-w-[36ch] drop-shadow-sm">{card.description}</p>
                   )}
 
                   <div className="pt-2">

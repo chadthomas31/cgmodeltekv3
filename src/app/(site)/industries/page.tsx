@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Accordion } from "@/components/ui/accordion";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Industries | cgmodeltek",
@@ -48,9 +49,36 @@ export default function Page() {
       </section>
 
       <section className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {["aerospace","automotive","medical","energy","consumer","defense"].map((s) => (
-          <Link key={s} href={`/industries/${s}`} className="rounded-md border p-4 hover:bg-muted/60 capitalize">
-            {s}
+        {[
+          { slug: "aerospace", label: "Aerospace" , img: "/images/industries/aerospace.jpg" },
+          { slug: "automotive", label: "Automotive" , img: "/images/industries/automotive.jpg" },
+          { slug: "medical", label: "Medical" , img: "/images/industries/medical.jpg" },
+          { slug: "energy", label: "Energy" , img: "/images/industries/energy.jpg" },
+          { slug: "consumer", label: "Consumer" , img: "/images/industries/consumer.jpg" },
+          { slug: "defense", label: "Defense" , img: "/images/industries/defense.jpg" },
+        ].map((t) => (
+          <Link
+            key={t.slug}
+            href={`/industries/${t.slug}`}
+            className="group relative block overflow-hidden rounded-xl border border-white/10 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-2xl"
+          >
+            <div className="relative aspect-[16/9] w-full">
+              {t.img && (
+                <Image
+                  src={t.img}
+                  alt={t.label}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover transition-all duration-300 group-hover:brightness-90"
+                  priority={false}
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-all duration-300 group-hover:from-black/80 group-hover:via-black/30" />
+              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-black/55 px-4 py-3 text-white transition-colors duration-300 group-hover:bg-black/60">
+                <span className="text-sm font-semibold">{t.label}</span>
+                <span aria-hidden className="opacity-80 group-hover:opacity-100">→</span>
+              </div>
+            </div>
           </Link>
         ))}
       </section>
