@@ -86,12 +86,12 @@ export function FxHero({
 
   // Mini industries list with thumbnails
   const industriesMini = [
-    { title: "Aerospace", slug: "aerospace", image: "/images/industries/aerospace.jpg" },
-    { title: "Automotive", slug: "automotive", image: "/images/industries/automotive.jpg" },
-    { title: "Medical", slug: "medical", image: "/images/industries/medical.jpg" },
-    { title: "Energy", slug: "energy", image: "/images/industries/energy.jpg" },
-    { title: "Consumer", slug: "consumer", image: "/images/industries/consumer.jpg" },
-    { title: "Defense", slug: "defense", image: "/images/industries/defense.jpg" },
+    { title: "Aerospace", slug: "aerospace", image: "/images/industries/aerospace.png" },
+    { title: "Automotive", slug: "automotive", image: "/images/industries/automotive.png" },
+    { title: "Medical", slug: "medical", image: "/images/industries/medical.png" },
+    { title: "Energy", slug: "energy", image: "/images/industries/energy.png" },
+    { title: "Consumer", slug: "consumer", image: "/images/industries/consumer.png" },
+    { title: "Defense", slug: "defense", image: "/images/industries/defense.png" },
   ];
 
   return (
@@ -116,7 +116,7 @@ export function FxHero({
             </h1>
           )}
           {subtitleBanner?.trim() && (
-            <div className="mt-5 mx-auto w-full max-w-[1400px] rounded-xl border border-white/20 bg-black/30 px-4 py-3 text-center text-lg sm:text-2xl md:text-3xl font-semibold text-white shadow-sm backdrop-blur-sm">
+            <div className="mt-5 mx-auto w-full max-w-[1400px] px-4 text-center text-lg sm:text-2xl md:text-3xl font-semibold text-white">
               {subtitleBanner}
             </div>
           )}
@@ -131,7 +131,7 @@ export function FxHero({
               <div
                 key={card.title}
                 className={cn(
-                  "group relative overflow-hidden rounded-2xl border-2 shadow-xl transition-all duration-300 min-h-[360px] sm:min-h-[460px] lg:min-h-[520px]",
+                  "group relative overflow-hidden rounded-2xl border-2 shadow-xl transition-all duration-300 min-h-[360px] sm:min-h-[460px] lg:min-h-[520px] hover:border-orange-400",
                   card.colorClass
                 )}
                 onMouseEnter={() => setActive(card.title)}
@@ -199,6 +199,19 @@ export function FxHero({
               </div>
               {active === "About Us" && teamMembers && teamMembers.length > 0 ? (
                 <div className="h-full overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                  <div className="space-y-4 text-sm sm:text-base text-white/90">
+                    <h3 className="text-2xl font-semibold text-white">Welcome to CG Model Tek</h3>
+                    <p>
+                      At CG Model Tek, we are redefining precision in aerospace modeling and design. As a pioneering startup in the aerospace manufacturing industry, our mission is to deliver precision, innovation, and excellence in every project we undertake.
+                    </p>
+                    <p>
+                      Our team of highly skilled professionals brings decades of combined experience in aerospace design, machining, and program management. Together, we push the boundaries of technology to deliver cutting-edge solutions tailored to each client’s unique needs.
+                    </p>
+                    <p>
+                      We take pride in our state-of-the-art equipment and advanced manufacturing capabilities, engineered to meet the highest standards of quality and efficiency. From rapid prototyping to full-scale production, CG Model Tek combines expertise, technology, and passion to transform ideas into flight-ready reality.
+                    </p>
+                    <h4 className="pt-6 text-xl font-semibold text-white text-center">Meet the Team</h4>
+                  </div>
                   <LeadershipGrid
                     textOnly
                     gridClassName="grid gap-3 sm:grid-cols-3 lg:grid-cols-6"
@@ -220,7 +233,7 @@ export function FxHero({
                       <Link
                         key={s.slug}
                         href={`/services/${s.slug}`}
-                        className="group flex aspect-square items-center justify-center rounded-lg border border-pink-500/50 bg-white/5 p-2 text-center hover:bg-white/10 hover:border-pink-400 ring-1 ring-pink-500/20"
+                        className="group flex aspect-square items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-center hover:bg-white/10 hover:border-orange-400"
                       >
                         <span className="text-sm sm:text-base font-semibold text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]">{s.title}</span>
                       </Link>
@@ -239,10 +252,17 @@ export function FxHero({
                       <Link
                         key={i.slug}
                         href={`/industries/${i.slug}`}
-                        className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 hover:bg-white/10"
+                        className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-orange-400"
                       >
                         <div className="relative aspect-square w-full">
-                          <Image src={i.image} alt={i.title} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                          <Image
+                            src={i.image}
+                            alt={i.title}
+                            fill
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                            unoptimized
+                          />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                           <div className="absolute inset-x-0 bottom-0 p-2 text-center">
                             <span className="text-sm font-semibold text-white drop-shadow">{i.title}</span>

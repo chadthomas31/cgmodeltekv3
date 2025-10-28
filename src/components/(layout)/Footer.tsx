@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t mt-10">
+    <footer className="border-t mt-10 relative z-30">
       <div className="container mx-auto px-4 py-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="space-y-1 text-sm text-muted-foreground">
           <div className="font-medium text-foreground">CG Model Tek LLC</div>
@@ -10,8 +10,8 @@ export default function Footer() {
             </a>
           </div>
           <div>
-            <a href="tel:5736463996" className="hover:underline">
-              573-646-3996
+            <a href="tel:9314552617" className="hover:underline">
+              931-455-2617
             </a>
           </div>
           <div className="opacity-70">© {new Date().getFullYear()} CG Model Tek LLC. All rights reserved.</div>

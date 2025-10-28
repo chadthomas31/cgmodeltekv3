@@ -47,8 +47,9 @@ export function LeadershipGrid({
 
   return (
     <div className={cn(gridClassName ?? "grid gap-6 sm:grid-cols-2 lg:grid-cols-4", className)}>
-      {items.map((p) => {
+      {items.map((p, i) => {
         const slug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+        const key = `${slug}-${i}`;
         const id = idFromName ? slug : undefined;
         const href = linkToBase ? `${linkToBase}#${slug}` : undefined;
         const content = (
@@ -85,12 +86,12 @@ export function LeadershipGrid({
         );
 
         return href ? (
-          <Link key={p.name} id={id} href={href} className={classNames} aria-label={`View profile for ${p.name}`}>
+          <Link key={key} id={id} href={href} className={classNames} aria-label={`View profile for ${p.name}`}>
             {content}
           </Link>
         ) : (
           <button
-            key={p.name}
+            key={key}
             id={id}
             type="button"
             onClick={() => modalEnabled && setActive(p)}
