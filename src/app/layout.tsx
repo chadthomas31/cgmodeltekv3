@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import "../styles/cgmodeltek_slider_user.css";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { SiteBackground } from "@/components/sections/SiteBackground";
 import Footer from "@/components/(layout)/Footer";

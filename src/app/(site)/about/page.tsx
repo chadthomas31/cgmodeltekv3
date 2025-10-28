@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Hero } from "@/components/sections/Hero";
 import { Accordion } from "@/components/ui/accordion";
 import Link from "next/link";
 import { MDXContent } from "@/components/MDXContent";
@@ -11,20 +12,23 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="container mx-auto px-4 py-12">
-      <Breadcrumbs
-        className="mb-6"
-        segments={[
-          { href: "/", label: "Home" },
-          { href: "/about", label: "About Us" },
-        ]}
+    <div className="container mx-auto px-0 pb-12">
+      <Hero
+        className="mb-8"
+        title="About Us"
+        subtitle="We are an industrial engineering partner focused on precision machining, robotics, and production systems that perform under pressure."
+        titleClassName="font-sans font-semibold tracking-tight text-4xl sm:text-5xl md:text-6xl"
+        overlayClassName="hidden"
+        image={{ src: "/images/about_us.png", alt: "Team and advanced manufacturing environment" }}
       />
-
-      <h1 className="headline-1">About Us</h1>
-      <p className="mt-4 max-w-2xl text-muted-foreground">
-        We are an industrial engineering partner focused on precision machining, robotics, and
-        production systems that perform under pressure.
-      </p>
+      <div className="px-4">
+        <Breadcrumbs
+          className="mb-6"
+          segments={[
+            { href: "/", label: "Home" },
+            { href: "/about", label: "About Us" },
+          ]}
+        />
 
       {/* Optional long-form MDX content */}
       <div className="mt-6">
@@ -85,6 +89,7 @@ export default function Page() {
           </Link>
         ))}
       </section>
+      </div>
     </div>
   );
 }

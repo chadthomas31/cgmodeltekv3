@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Hero } from "@/components/sections/Hero";
 import { Accordion } from "@/components/ui/accordion";
 import Link from "next/link";
 
@@ -10,20 +11,25 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="container mx-auto px-4 py-12">
-      <Breadcrumbs
-        className="mb-6"
-        segments={[
-          { href: "/", label: "Home" },
-          { href: "/services", label: "Services" },
-        ]}
+    <div className="container mx-auto px-0 pb-12">
+      <Hero
+        className="mb-8"
+        title="Services"
+        subtitle="Delivering end-to-end aerospace design, simulation, and modeling solutions — built on precision engineering, innovation, and technical mastery."
+        titleClassName="font-sans font-semibold tracking-tight text-4xl sm:text-5xl md:text-6xl"
+        overlayClassName="hidden"
+        image={{ src: "/images/services-hero.png", alt: "Aerospace schematic interface with aircraft and robotic arm" }}
       />
-      <h1 className="headline-1">Services</h1>
-      <p className="mt-4 max-w-2xl text-muted-foreground">
-        Precision capabilities from prototype to production. See process details and standards below.
-      </p>
+      <div className="px-4">
+        <Breadcrumbs
+          className="mb-6"
+          segments={[
+            { href: "/", label: "Home" },
+            { href: "/services", label: "Services" },
+          ]}
+        />
 
-      <section className="mt-10 grid items-center gap-8 md:grid-cols-2">
+      <section className="mt-4 grid items-center gap-8 md:grid-cols-2">
         <div className="space-y-4">
           <h2 className="headline-2">Capability, documented</h2>
           <p className="text-muted-foreground">
@@ -64,6 +70,7 @@ export default function Page() {
           />
         </div>
       </section>
+      </div>
     </div>
   );
 }

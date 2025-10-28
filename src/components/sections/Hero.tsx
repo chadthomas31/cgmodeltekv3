@@ -8,6 +8,8 @@ export function Hero({
   primary,
   secondary,
   image,
+  titleClassName,
+  overlayClassName,
   className = "",
 }: {
   title: string;
@@ -15,6 +17,8 @@ export function Hero({
   primary?: { href: string; label: string };
   secondary?: { href: string; label: string };
   image: { src: string; alt: string };
+  titleClassName?: string;
+  overlayClassName?: string;
   className?: string;
 }) {
   return (
@@ -29,12 +33,12 @@ export function Hero({
           className="object-cover"
           fetchPriority="high"
         />
-        <div className="hero-overlay absolute inset-0" />
+        <div className={cn(overlayClassName ?? "hero-overlay", "absolute inset-0")} />
       </div>
 
       <div className="container mx-auto grid min-h-[72svh] items-center px-4 py-16 md:py-24 lg:min-h-[78svh]">
         <div className="max-w-2xl">
-          <h1 className="headline-1 text-foreground">
+          <h1 className={cn(titleClassName ?? "headline-1", "text-foreground")}>
             {title}
           </h1>
           {subtitle && (
