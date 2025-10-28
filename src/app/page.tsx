@@ -24,7 +24,18 @@ export default function Home() {
         className="relative z-30"
         eyebrow=""
         title="CG Model Tek"
+        subtitleBanner="Advancing Aerodynamics Through Precision and Innovation"
         titleClassName="font-sans font-semibold tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+        teamMembers={[
+          { name: "Chris Athaide", role: "Founder & CEO", img: "", bio: "" },
+          { name: "Naresh Kumar", role: "Chief Financial Officer", img: "", bio: "" },
+          { name: "Tony Boyce", role: "Title", img: "", bio: "" },
+          { name: "Ian Watts", role: "IT & Information Security Leader", img: "/Leadership/Ian_Watts.Info.sec.ofc.png", bio: "" },
+          { name: "John M. Nichols", role: "Executive Advisor", img: "/Leadership/John_Nichols.png", bio: "" },
+          { name: "John Statum", role: "Vice President of Operations", img: "/Leadership/john_statum.png", bio: "" },
+          { name: "Larry Phelps", role: "Shop Supervisor", img: "/Leadership/larry_phelps.png", bio: "" },
+          { name: "John Hill", role: "Quality Manager", img: "/Leadership/john_hill.png", bio: "" },
+        ]}
         cards={[
           {
             title: "About Us",
@@ -41,8 +52,9 @@ export default function Home() {
             href: "/services",
             cta: "Explore services",
             colorClass: "text-white/95",
-            imageSrc: "/images/services-hero_v2.png",
-            imageAlt: "Aerospace schematics and robotic arm",
+            imageSrc: "/images/dancing_leprechaaun.png",
+            imageAlt: "",
+            bareImage: true,
           },
           {
             title: "Industries",
@@ -52,13 +64,6 @@ export default function Home() {
             colorClass: "bg-gradient-to-br from-purple-500 via-fuchsia-500 to-purple-600 text-white",
             imageSrc: "/images/Industries_v2.png",
             imageAlt: "Industries card background",
-          },
-          {
-            title: "Contact Us",
-            description: "Ready to transform your vision into reality? Let's collaborate",
-            href: "/contact",
-            cta: "Get started",
-            colorClass: "bg-gradient-to-br from-rose-800 via-rose-900 to-red-950 text-white",
           },
         ]}
       />

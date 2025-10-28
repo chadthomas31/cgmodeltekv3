@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Accordion } from "@/components/ui/accordion";
+import { StickyQuoteButton } from "@/components/StickyQuoteButton";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -94,6 +95,7 @@ export default function Page() {
           />
         </div>
       </section>
+      <StickyQuoteButton />
     </div>
   );
 }

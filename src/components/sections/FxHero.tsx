@@ -4,6 +4,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Image from "next/image";
+import { LeadershipImage } from "@/components/LeadershipImage";
+import { LeadershipGrid } from "@/components/sections/LeadershipGrid";
 
 export type FxHeroCard = {
   title: string;
@@ -13,6 +15,14 @@ export type FxHeroCard = {
   colorClass: string; // Tailwind color classes for background
   imageSrc?: string; // optional background image
   imageAlt?: string;
+  bareImage?: boolean; // if true, show only the image with no overlays/content
+};
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  img: string;
+  bio: string;
 };
 
 export function FxHero({
@@ -21,12 +31,16 @@ export function FxHero({
   cards = [],
   className = "",
   titleClassName,
+  subtitleBanner,
+  teamMembers,
 }: {
   eyebrow?: string;
   title?: string;
   cards: FxHeroCard[];
   className?: string;
   titleClassName?: string;
+  subtitleBanner?: string;
+  teamMembers?: TeamMember[];
 }) {
   const [active, setActive] = useState<string | null>(null);
 
@@ -34,13 +48,13 @@ export function FxHero({
   const subsections: Record<string, { label: string; href: string }[]> = {
     "About Us": [
       { label: "Company", href: "/about" },
-      { label: "Team", href: "/about#team" },
-      { label: "Capabilities", href: "/about#capabilities" },
+      { label: "Team", href: "/team" },
+      { label: "Reviews", href: "/about/reviews" },
     ],
     Services: [
-      { label: "CAD Modeling", href: "/services#cad" },
-      { label: "Prototyping", href: "/services#proto" },
-      { label: "FEA / CFD", href: "/services#analysis" },
+      { label: "All Services", href: "/services" },
+      { label: "Precision CNC Machining", href: "/services/precision-cnc-machining" },
+      { label: "Prototype Machining", href: "/services/prototype-machining" },
     ],
     Industries: [
       { label: "Aerospace & Defense", href: "/industries/aerospace" },
@@ -49,18 +63,37 @@ export function FxHero({
       { label: "Packaging", href: "/industries/consumer" },
       { label: "Medical", href: "/industries/medical" },
       { label: "Oil and Energy", href: "/industries/energy" },
-      { label: "OEM & Other Industries", href: "/industries" },
+      { label: "All Industries", href: "/industries" },
     ],
     "Contact Us": [
-      { label: "Request Quote", href: "/contact#quote" },
-      { label: "Book a Call", href: "/contact#schedule" },
-      { label: "Locations", href: "/contact#locations" },
+      { label: "Contact", href: "/contact" },
     ],
   };
 
-  const onCardClick = (title: string) => {
-    setActive((prev) => (prev === title ? null : title));
-  };
+  // Mini services list for dropdown grid (links to detailed pages)
+  const servicesMini = [
+    { title: "Precision CNC Machining", slug: "precision-cnc-machining" },
+    { title: "CNC Milling", slug: "cnc-milling" },
+    { title: "CNC Turning", slug: "cnc-turning" },
+    { title: "Wire EDM", slug: "wire-edm" },
+    { title: "5 Axis Machining", slug: "5-axis-machining" },
+    { title: "Multi Axis Machining", slug: "multi-axis-machining" },
+    { title: "Aluminum CNC Machining", slug: "aluminum-cnc-machining" },
+    { title: "Stainless Steel Machining", slug: "stainless-steel-machining" },
+    { title: "Prototype Machining", slug: "prototype-machining" },
+    { title: "Value Added", slug: "value-added" },
+  ];
+
+  // Mini industries list with thumbnails
+  const industriesMini = [
+    { title: "Aerospace", slug: "aerospace", image: "/images/industries/aerospace.jpg" },
+    { title: "Automotive", slug: "automotive", image: "/images/industries/automotive.jpg" },
+    { title: "Medical", slug: "medical", image: "/images/industries/medical.jpg" },
+    { title: "Energy", slug: "energy", image: "/images/industries/energy.jpg" },
+    { title: "Consumer", slug: "consumer", image: "/images/industries/consumer.jpg" },
+    { title: "Defense", slug: "defense", image: "/images/industries/defense.jpg" },
+  ];
+
   return (
     <section
       className={cn(
@@ -82,60 +115,63 @@ export function FxHero({
               {title}
             </h1>
           )}
+          {subtitleBanner?.trim() && (
+            <div className="mt-5 mx-auto w-full max-w-[1400px] rounded-xl border border-white/20 bg-black/30 px-4 py-3 text-center text-lg sm:text-2xl md:text-3xl font-semibold text-white shadow-sm backdrop-blur-sm">
+              {subtitleBanner}
+            </div>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-[1400px] mx-auto">
-          {cards.map((card) => (
-            <article
-              key={card.title}
-              className={cn(
-                "group relative overflow-hidden rounded-2xl cursor-pointer",
-                "h-[28vh] sm:h-[32vh] lg:h-[36vh] min-h-[180px]",
-                "transition-all duration-300 ease-in-out will-change-transform",
-                "hover:scale-[1.02] hover:shadow-2xl",
-                card.colorClass
-              )}
-              onClick={() => onCardClick(card.title)}
-              aria-expanded={active === card.title}
-              role="button"
-            >
-              {card.imageSrc && (
-                <Image
-                  src={card.imageSrc}
-                  alt={card.imageAlt ?? ""}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 25vw"
-                  className="object-cover"
-                  priority={false}
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-              <div className="flex h-full flex-col justify-end p-6 sm:p-8">
-                <div className="space-y-3 rounded-xl bg-black/45 backdrop-blur-sm p-4 sm:p-5 border border-white/10">
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight drop-shadow-md">{card.title}</h3>
-                  {card.description && (
-                    <p className="text-sm sm:text-base opacity-95 max-w-[36ch] drop-shadow-sm">{card.description}</p>
-                  )}
-
-                  <div className="pt-2">
-                    <Link
-                      href={card.href}
-                      className={cn(
-                        "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium",
-                        "border-2 transition-all duration-250",
-                        "hover:bg-black/20 hover:scale-105"
-                      )}
-                    >
-                      {card.cta ?? "Launch"}
-                      <span aria-hidden className="text-lg">→</span>
-                    </Link>
-                  </div>
-                </div>
+        <div
+          className="max-w-[1400px] mx-auto"
+          onMouseLeave={() => setActive(null)}
+        >
+          <div className="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {cards.map((card) => (
+              <div
+                key={card.title}
+                className={cn(
+                  "group relative overflow-hidden rounded-2xl border-2 shadow-xl transition-all duration-300 min-h-[360px] sm:min-h-[460px] lg:min-h-[520px]",
+                  card.colorClass
+                )}
+                onMouseEnter={() => setActive(card.title)}
+              >
+                {card.imageSrc && (
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt ?? ""}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="object-cover"
+                    priority={false}
+                  />
+                )}
+                {!card.bareImage && (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="flex h-full flex-col justify-end p-3 sm:p-4">
+                      <div className="mx-auto mb-1 w-full max-w-sm space-y-2 rounded-lg bg-black/35 backdrop-blur-sm p-3 sm:p-3 border border-white/5">
+                        <h3 className="text-center text-xl sm:text-2xl font-semibold tracking-tight text-white drop-shadow">{card.title}</h3>
+                        <div className="pt-2">
+                          <Link
+                            href={card.href}
+                            className={cn(
+                              "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium",
+                              "border-2 transition-all duration-250",
+                              "hover:bg-black/20 hover:scale-105"
+                            )}
+                          >
+                            {card.cta ?? "Launch"}
+                            <span aria-hidden className="text-lg">→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
-            </article>
-          ))}
-        </div>
+            ))}
+          </div>
 
         {/* Dropdown panel under cards */}
         <div
@@ -161,21 +197,84 @@ export function FxHero({
                   Close
                 </button>
               </div>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {(active && subsections[active] ? subsections[active] : []).map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10"
-                  >
-                    <span className="text-base font-medium">{item.label}</span>
-                    <span aria-hidden className="opacity-70 group-hover:opacity-100">→</span>
-                  </Link>
-                ))}
-              </div>
+              {active === "About Us" && teamMembers && teamMembers.length > 0 ? (
+                <div className="h-full overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                  <LeadershipGrid
+                    textOnly
+                    gridClassName="grid gap-3 sm:grid-cols-3 lg:grid-cols-6"
+                    cardClassName="p-2"
+                    modalEnabled={false}
+                    linkToBase="/team"
+                    people={teamMembers}
+                  />
+                  <div className="mt-4 text-right">
+                    <Link href="/team" className="rounded-md border border-white/20 px-3 py-1.5 text-xs sm:text-sm hover:bg-white/10">
+                      View full team
+                    </Link>
+                  </div>
+                </div>
+              ) : active === "Services" ? (
+                <div className="h-full overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                    {servicesMini.map((s) => (
+                      <Link
+                        key={s.slug}
+                        href={`/services/${s.slug}`}
+                        className="group flex aspect-square items-center justify-center rounded-lg border border-pink-500/50 bg-white/5 p-2 text-center hover:bg-white/10 hover:border-pink-400 ring-1 ring-pink-500/20"
+                      >
+                        <span className="text-sm sm:text-base font-semibold text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)]">{s.title}</span>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-right">
+                    <Link href="/services" className="rounded-md border border-white/20 px-3 py-1.5 text-xs sm:text-sm hover:bg-white/10">
+                      View all services
+                    </Link>
+                  </div>
+                </div>
+              ) : active === "Industries" ? (
+                <div className="h-full overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                    {industriesMini.map((i) => (
+                      <Link
+                        key={i.slug}
+                        href={`/industries/${i.slug}`}
+                        className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 hover:bg-white/10"
+                      >
+                        <div className="relative aspect-square w-full">
+                          <Image src={i.image} alt={i.title} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                          <div className="absolute inset-x-0 bottom-0 p-2 text-center">
+                            <span className="text-sm font-semibold text-white drop-shadow">{i.title}</span>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-right">
+                    <Link href="/industries" className="rounded-md border border-white/20 px-3 py-1.5 text-xs sm:text-sm hover:bg-white/10">
+                      View all industries
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {(active && subsections[active] ? subsections[active] : []).map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10"
+                    >
+                      <span className="text-base font-medium">{item.label}</span>
+                      <span aria-hidden className="opacity-70 group-hover:opacity-100">→</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -173,8 +173,8 @@ export default function AerospaceSlider() {
             <article
               key={card.title}
               className="project-card"
-              ref={(el) => (cardRefs.current[i] = el)}
-              active={i === 0 ? "" : undefined}
+              ref={(el) => { cardRefs.current[i] = el; }}
+              data-active={i === 0 ? "" : undefined}
               onMouseEnter={() => {
                 if (typeof window !== "undefined" && window.matchMedia("(hover:hover)").matches) {
                   activate(i, true);

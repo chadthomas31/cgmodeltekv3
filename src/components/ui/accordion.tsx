@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 
-type Item = { id: string; title: string; content: React.ReactNode };
+type Item = { id: string; title: React.ReactNode; content: React.ReactNode };
 
 export function Accordion({ items }: { items: Item[] }) {
   const [open, setOpen] = React.useState<string | null>(null);

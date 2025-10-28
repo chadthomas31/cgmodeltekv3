@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Hero } from "@/components/sections/Hero";
 import { Accordion } from "@/components/ui/accordion";
+import { StickyQuoteButton } from "@/components/StickyQuoteButton";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Services | cgmodeltek",
@@ -10,6 +12,71 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const featured = {
+    title: "Precision CNC Machining",
+    slug: "precision-cnc-machining",
+    blurb:
+      "End-to-end precision machining for aerospace models and production components.",
+    imageSrc: "/images/services/featured_cnc.jpg",
+  };
+
+  const services = [
+    {
+      title: "CNC Milling",
+      slug: "cnc-milling",
+      blurb: "High-accuracy 3–5 axis milling for complex geometries.",
+      imageSrc: "/images/services/cnc_milling.jpg",
+    },
+    {
+      title: "CNC Turning",
+      slug: "cnc-turning",
+      blurb: "Tight-tolerance turning for shafts, housings, and custom fittings.",
+      imageSrc: "/images/services/cnc_turning.jpg",
+    },
+    {
+      title: "Wire EDM",
+      slug: "wire-edm",
+      blurb: "Fine-feature cutting with exceptional edge quality.",
+      imageSrc: "/images/services/wire_edm.jpg",
+    },
+    {
+      title: "5 Axis Machining",
+      slug: "5-axis-machining",
+      blurb: "Simultaneous multi-axis for reduced setups and superior surface finish.",
+      imageSrc: "/images/services/5_axis.jpg",
+    },
+    {
+      title: "Multi Axis Machining",
+      slug: "multi-axis-machining",
+      blurb: "Complex parts, consolidated operations, repeatable results.",
+      imageSrc: "/images/services/multi_axis.jpg",
+    },
+    {
+      title: "Aluminum CNC Machining",
+      slug: "aluminum-cnc-machining",
+      blurb: "Rapid, precise aluminum prototypes and production runs.",
+      imageSrc: "/images/services/aluminum_cnc.jpg",
+    },
+    {
+      title: "Stainless Steel Machining",
+      slug: "stainless-steel-machining",
+      blurb: "Durable, corrosion-resistant parts for demanding environments.",
+      imageSrc: "/images/services/stainless.jpg",
+    },
+    {
+      title: "Prototype Machining",
+      slug: "prototype-machining",
+      blurb: "Fast-turn prototypes that accelerate design validation.",
+      imageSrc: "/images/services/prototype.jpg",
+    },
+    {
+      title: "Value Added",
+      slug: "value-added",
+      blurb: "Assembly, finishing, and inspection to ship-ready state.",
+      imageSrc: "/images/services/value_added.jpg",
+    },
+  ];
+
   return (
     <div className="container mx-auto px-0 pb-12">
       <Hero
@@ -29,14 +96,56 @@ export default function Page() {
           ]}
         />
 
-      <section className="mt-4 grid items-center gap-8 md:grid-cols-2">
-        <div className="space-y-4">
-          <h2 className="headline-2">Capability, documented</h2>
-          <p className="text-muted-foreground">
-            Our programming, fixturing, and inspection plans are built for repeatability and scale.
-          </p>
+      {/* Featured + Additional Services */}
+      <section className="mt-6">
+        <div className="grid gap-6 lg:grid-cols-3">
+          {/* Featured Service */}
+          <Link
+            href={`#${featured.slug}`}
+            className="group relative overflow-hidden rounded-2xl border bg-card shadow-sm lg:col-span-2"
+          >
+            <div className="relative h-[280px] sm:h-[360px]">
+              <Image
+                src={featured.imageSrc}
+                alt={featured.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 66vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                  Featured Service
+                </div>
+                <h3 className="mt-2 text-2xl sm:text-3xl font-semibold text-white drop-shadow">
+                  {featured.title}
+                </h3>
+                <p className="mt-1 text-white/90 drop-shadow-sm">{featured.blurb}</p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Additional Services */}
+          <div className="rounded-2xl border bg-card p-4">
+            <h4 className="mb-3 text-lg font-semibold">Additional Services</h4>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {services.map((s) => (
+                <Link key={s.slug} href={`#${s.slug}`} className="group flex items-center gap-3 rounded-lg p-2 hover:bg-muted">
+                  <div className="relative h-12 w-12 overflow-hidden rounded-md">
+                    <Image src={s.imageSrc} alt={s.title} fill sizes="64px" className="object-cover" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium leading-tight group-hover:underline">{s.title}</div>
+                    <div className="text-xs text-muted-foreground line-clamp-2">{s.blurb}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-3 text-right text-sm">
+              Interested in a quote? <Link href="/contact" className="text-primary underline">Get in touch</Link>.
+            </div>
+          </div>
         </div>
-        <div className="aspect-video w-full rounded-lg border bg-muted/40" />
       </section>
 
       <section className="mt-12 rounded-lg border bg-primary/5 p-6">
@@ -51,11 +160,16 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {["milling","turning","multi-axis","prototyping","production","finishing"].map((s) => (
-          <Link key={s} href={`/services/${s}`} className="rounded-md border p-4 hover:bg-muted/60 capitalize">
-            {s.replace("-"," ")}
-          </Link>
+      <section className="mt-12 space-y-10">
+        <div id={featured.slug} className="scroll-mt-24 rounded-xl border p-5">
+          <h3 className="headline-3">{featured.title}</h3>
+          <p className="mt-2 text-muted-foreground">{featured.blurb}</p>
+        </div>
+        {services.map((s) => (
+          <div key={s.slug} id={s.slug} className="scroll-mt-24 rounded-xl border p-5">
+            <h4 className="text-xl font-semibold">{s.title}</h4>
+            <p className="mt-2 text-muted-foreground">{s.blurb}</p>
+          </div>
         ))}
       </section>
 
@@ -71,6 +185,7 @@ export default function Page() {
         </div>
       </section>
       </div>
+      <StickyQuoteButton />
     </div>
   );
 }

@@ -21,17 +21,20 @@ const MEGA: Record<string, { label: string; items: { href: string; label: string
   services: {
     label: "Services",
     items: [
-      { href: "/services", label: "Capabilities" },
-      { href: "/services#automation", label: "Robotic Tending" },
-      { href: "/services#quality", label: "Quality & Metrology" },
+      { href: "/services", label: "All Services" },
+      { href: "/services/precision-cnc-machining", label: "Precision CNC Machining" },
+      { href: "/services/prototype-machining", label: "Prototype Machining" },
+      { href: "/services/wire-edm", label: "Wire EDM" },
     ],
   },
   industries: {
     label: "Industries",
     items: [
-      { href: "/industries#aerospace", label: "Aerospace" },
-      { href: "/industries#medical", label: "Medical" },
-      { href: "/industries#industrial", label: "Industrial" },
+      { href: "/industries/aerospace", label: "Aerospace & Defense" },
+      { href: "/industries/automotive", label: "Automotive" },
+      { href: "/industries/medical", label: "Medical" },
+      { href: "/industries/energy", label: "Energy" },
+      { href: "/industries", label: "All Industries" },
     ],
   },
 };
@@ -92,7 +95,7 @@ export default function MobileMenu({ nav }: { nav: NavItem[] }) {
                         <span>About Us</span>
                         <ChevronRight className="h-4 w-4 opacity-60" />
                       </div>
-                    ) as unknown as string,
+                    ),
                     content: (
                       <ul className="py-1">
                         {MEGA.about.items.map((i) => (
@@ -116,7 +119,7 @@ export default function MobileMenu({ nav }: { nav: NavItem[] }) {
                         <span>Services</span>
                         <ChevronRight className="h-4 w-4 opacity-60" />
                       </div>
-                    ) as unknown as string,
+                    ),
                     content: (
                       <ul className="py-1">
                         {MEGA.services.items.map((i) => (
@@ -140,7 +143,7 @@ export default function MobileMenu({ nav }: { nav: NavItem[] }) {
                         <span>Industries</span>
                         <ChevronRight className="h-4 w-4 opacity-60" />
                       </div>
-                    ) as unknown as string,
+                    ),
                     content: (
                       <ul className="py-1">
                         {MEGA.industries.items.map((i) => (
