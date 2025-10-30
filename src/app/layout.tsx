@@ -62,12 +62,12 @@ export default function RootLayout({
               <div className="flex items-center gap-6 text-sm font-medium text-white drop-shadow">
                 <Link href="/" className="flex items-center gap-3 sm:ml-6 md:ml-10 lg:ml-24">
                   <Image
-                    src="/images/logo/fulllogo_nobuffer_large_Canvas.png"
+                    src="/images/logo/cgmodelteklogo.png"
                     alt="CG Model Tek"
                     width={520}
                     height={104}
                     priority
-                    className="mt-4 h-24 w-auto object-contain rounded-full border-2 border-white/60 shadow-lg bg-black/20 p-1"
+                    className="mt-4 h-32 sm:h-36 md:h-40 lg:h-44 w-auto object-contain"
                   />
                 </Link>
                 <div className="ml-auto flex items-center gap-6">

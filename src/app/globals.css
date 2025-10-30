@@ -194,6 +194,25 @@
     pointer-events: none;
     background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.12) 100%);
   }
+
+  /* Transparent grid overlay for hero backgrounds */
+  .bg-hero-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(var(--grid-bold) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px);
+    background-size:
+      24px 24px,
+      24px 24px,
+      120px 120px,
+      120px 120px;
+    background-position:
+      0 0,
+      0 0,
+      -1px -1px,
+      -1px -1px;
+  }
 }
 
 /* Reduced motion preference: disable animations/transitions globally */

@@ -4,19 +4,13 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="relative">
-      {/* Page-local blue background overlay */}
+      {/* Page-local orange background overlay */}
       <div aria-hidden className="pointer-events-none fixed inset-0 z-20">
-        {/* vivid blue base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0b4dd9] via-[#0a3aa8] to-[#071f5a]" />
-        {/* starfield image over gradient */}
-        <Image
-          src="/images/hero.svg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover opacity-80"
-          priority={false}
-        />
+        {/* Tennessee orange base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFA64D] via-[#FF8200] to-[#CC6A00]" />
+        {/* transparent grid overlay */}
+        <div className="absolute inset-0 bg-hero-grid opacity-30" />
+        {/* starfield image removed to avoid blue tint */}
         {/* subtle depth vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/20" />
       </div>
