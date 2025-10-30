@@ -52,9 +52,8 @@ export default function Home() {
             href: "/services",
             cta: "Explore services",
             colorClass: "text-white/95",
-            imageSrc: "/images/dancing_leprechaaun.png",
-            imageAlt: "",
-            bareImage: true,
+            imageSrc: "/images/services-hero_V5.png",
+            imageAlt: "Services card background",
           },
           {
             title: "Industries",

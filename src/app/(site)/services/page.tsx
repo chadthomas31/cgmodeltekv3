@@ -36,7 +36,14 @@ export default function Page() {
     {
       title: "Wire EDM",
       slug: "wire-edm",
-      blurb: "Fine-feature cutting with exceptional edge quality.",
+      blurb: "Cutting-edge precision. Mitsubishi 4-Axis Wire EDM for complex contours, fine details, and tight-tolerance aerospace components.",
+      imageSrc: "/images/services/wire_edm.jpg",
+    },
+    {
+      title: "CNC Die-Sink EDM",
+      slug: "cnc-die-sink-edm",
+      blurb:
+        "Electrical precision at its finest. Our 4-Axis EDM machines deliver unmatched accuracy for complex cavities, molds, and fine-detail components.",
       imageSrc: "/images/services/wire_edm.jpg",
     },
     {

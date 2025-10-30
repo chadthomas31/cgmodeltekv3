@@ -60,13 +60,21 @@ export default function RootLayout({
           <nav className="fixed top-0 inset-x-0 z-50">
             <div className="w-full px-2 sm:px-3 lg:px-4 py-3">
               <div className="flex items-center gap-6 text-sm font-medium text-white drop-shadow">
-                <Link href="/" className="flex items-center gap-3">
-                  <Image src="/images/logo/fulllogo_nobuffer.png" alt="CG Model Tek" width={520} height={104} priority className="h-28 w-auto object-contain" />
+                <Link href="/" className="flex items-center gap-3 sm:ml-6 md:ml-10 lg:ml-24">
+                  <Image
+                    src="/images/logo/fulllogo_nobuffer_large_Canvas.png"
+                    alt="CG Model Tek"
+                    width={520}
+                    height={104}
+                    priority
+                    className="mt-4 h-24 w-auto object-contain rounded-full border-2 border-white/60 shadow-lg bg-black/20 p-1"
+                  />
                 </Link>
                 <div className="ml-auto flex items-center gap-6">
                   <Link href="/" className="hover:underline underline-offset-4">Home</Link>
                   <Link href="/about" className="hover:underline underline-offset-4">About</Link>
                   <Link href="/services" className="hover:underline underline-offset-4">Services</Link>
+                  <Link href="/equipment" className="hover:underline underline-offset-4">Equipment</Link>
                   <Link href="/industries" className="hover:underline underline-offset-4">Industries</Link>
                   <Link href="/blog" className="hover:underline underline-offset-4">Blog</Link>
                   <Link href="/contact" className="hover:underline underline-offset-4">Contact</Link>
