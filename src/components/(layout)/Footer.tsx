@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center gap-3">
-          <a href="/contact" className="rounded-md bg-primary px-4 py-2 text-primary-foreground text-sm">
+          <a href="/rfq" className="rounded-md bg-primary px-4 py-2 text-primary-foreground text-sm">
             Request a Quote
           </a>
         </div>

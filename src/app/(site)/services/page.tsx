@@ -149,7 +149,7 @@ export default function Page() {
               ))}
             </div>
             <div className="mt-3 text-right text-sm">
-              Interested in a quote? <Link href="/contact" className="text-primary underline">Get in touch</Link>.
+              Interested in a quote? <Link href="/rfq" className="text-primary underline">Get in touch</Link>.
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function Page() {
             <h3 className="headline-3">Have a model ready?</h3>
             <p className="text-sm text-muted-foreground">Share your part and required quantities.</p>
           </div>
-          <Link href="/contact" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">
+          <Link href="/rfq" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">
             Request a Quote
           </Link>
         </div>

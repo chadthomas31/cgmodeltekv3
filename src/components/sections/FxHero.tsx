@@ -33,6 +33,8 @@ export function FxHero({
   titleClassName,
   subtitleBanner,
   teamMembers,
+  ctaPrimary,
+  ctaSecondary,
 }: {
   eyebrow?: string;
   title?: string;
@@ -41,6 +43,8 @@ export function FxHero({
   titleClassName?: string;
   subtitleBanner?: string;
   teamMembers?: TeamMember[];
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
 }) {
   const [active, setActive] = useState<string | null>(null);
 
@@ -56,14 +60,10 @@ export function FxHero({
       { label: "Precision CNC Machining", href: "/services/precision-cnc-machining" },
       { label: "Prototype Machining", href: "/services/prototype-machining" },
     ],
-    Industries: [
-      { label: "Aerospace & Defense", href: "/industries/aerospace" },
-      { label: "Automotive", href: "/industries/automotive" },
-      { label: "Food & Beverage", href: "/industries/consumer" },
-      { label: "Packaging", href: "/industries/consumer" },
-      { label: "Medical", href: "/industries/medical" },
-      { label: "Oil and Energy", href: "/industries/energy" },
-      { label: "All Industries", href: "/industries" },
+    "Aerospace Excellence": [
+      { label: "Aerospace Manufacturing", href: "/aerospace" },
+      { label: "Wind Tunnel Models", href: "/aerospace#wind-tunnel" },
+      { label: "Flight Test Components", href: "/aerospace#flight-test" },
     ],
     "Contact Us": [
       { label: "Contact", href: "/contact" },
@@ -84,14 +84,12 @@ export function FxHero({
     { title: "Value Added", slug: "value-added" },
   ];
 
-  // Mini industries list with thumbnails
-  const industriesMini = [
-    { title: "Aerospace", slug: "aerospace", image: "/images/industries/aerospace.png" },
-    { title: "Automotive", slug: "automotive", image: "/images/industries/automotive.png" },
-    { title: "Medical", slug: "medical", image: "/images/industries/medical.png" },
-    { title: "Energy", slug: "energy", image: "/images/industries/energy.png" },
-    { title: "Consumer", slug: "consumer", image: "/images/industries/consumer.png" },
-    { title: "Defense", slug: "defense", image: "/images/industries/defense.png" },
+  // Aerospace capabilities with thumbnails
+  const aerospaceMini = [
+    { title: "Wind Tunnel Models", href: "/aerospace#wind-tunnel", image: "/images/industries/aerospace.png" },
+    { title: "Flight Test Components", href: "/aerospace#flight-test", image: "/images/industries/aerospace.png" },
+    { title: "Aerospace Tooling", href: "/aerospace#tooling", image: "/images/industries/aerospace.png" },
+    { title: "Complex Geometries", href: "/aerospace#geometries", image: "/images/industries/aerospace.png" },
   ];
 
   return (
@@ -118,6 +116,20 @@ export function FxHero({
           {subtitleBanner?.trim() && (
             <div className="mt-5 mx-auto w-full max-w-[1400px] px-4 text-center text-lg sm:text-2xl md:text-3xl font-semibold text-white">
               {subtitleBanner}
+            </div>
+          )}
+          {(ctaPrimary || ctaSecondary) && (
+            <div className="mt-6 flex items-center justify-center gap-3">
+              {ctaPrimary && (
+                <Link href={ctaPrimary.href} className="inline-flex items-center justify-center rounded-full bg-white text-black px-5 py-2.5 text-sm font-semibold hover:bg-white/90">
+                  {ctaPrimary.label}
+                </Link>
+              )}
+              {ctaSecondary && (
+                <Link href={ctaSecondary.href} className="inline-flex items-center justify-center rounded-full border border-white/30 text-white px-5 py-2.5 text-sm font-semibold hover:bg-white/10">
+                  {ctaSecondary.label}
+                </Link>
+              )}
             </div>
           )}
         </div>
@@ -245,13 +257,13 @@ export function FxHero({
                     </Link>
                   </div>
                 </div>
-              ) : active === "Industries" ? (
+              ) : active === "Aerospace Excellence" ? (
                 <div className="h-full overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                    {industriesMini.map((i) => (
+                    {aerospaceMini.map((i) => (
                       <Link
-                        key={i.slug}
-                        href={`/industries/${i.slug}`}
+                        key={i.href}
+                        href={i.href}
                         className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-orange-400"
                       >
                         <div className="relative aspect-square w-full">
@@ -272,8 +284,8 @@ export function FxHero({
                     ))}
                   </div>
                   <div className="mt-4 text-right">
-                    <Link href="/industries" className="rounded-md border border-white/20 px-3 py-1.5 text-xs sm:text-sm hover:bg-white/10">
-                      View all industries
+                    <Link href="/aerospace" className="rounded-md border border-white/20 px-3 py-1.5 text-xs sm:text-sm hover:bg-white/10">
+                      View all aerospace capabilities
                     </Link>
                   </div>
                 </div>

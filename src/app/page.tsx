@@ -8,8 +8,10 @@ export default function Home() {
       <div aria-hidden className="pointer-events-none fixed inset-0 z-20">
         {/* Tennessee orange base gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#FFA64D] via-[#FF8200] to-[#CC6A00]" />
-        {/* transparent grid overlay */}
-        <div className="absolute inset-0 bg-hero-grid opacity-30" />
+        {/* transparent grid overlay (stronger) */}
+        <div className="absolute inset-0 bg-hero-grid opacity-60" />
+        {/* plane schematics overlay */}
+        <div className="absolute inset-0 bg-hero-schematics opacity-25" />
         {/* starfield image removed to avoid blue tint */}
         {/* subtle depth vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/20" />
@@ -19,6 +21,8 @@ export default function Home() {
         eyebrow=""
         title="CG Model Tek"
         subtitleBanner="Advancing Aerodynamics Through Precision and Innovation"
+        ctaPrimary={{ label: "Request a Quote", href: "/rfq" }}
+        ctaSecondary={{ label: "Contact Us", href: "/contact" }}
         titleClassName="font-sans font-semibold tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
         teamMembers={[
           { name: "Chris Athaide", role: "Founder & CEO", img: "", bio: "" },
@@ -50,13 +54,13 @@ export default function Home() {
             imageAlt: "Services card background",
           },
           {
-            title: "Industries",
-            description: "Aerospace, defense, space systems, and precision manufacturing",
-            href: "/industries",
-            cta: "View more",
-            colorClass: "bg-gradient-to-br from-purple-500 via-fuchsia-500 to-purple-600 text-white",
+            title: "Aerospace Excellence",
+            description: "Precision wind tunnel models, flight test components, and aerospace manufacturing with full traceability and documentation for demanding applications.",
+            href: "/aerospace",
+            cta: "Our expertise",
+            colorClass: "bg-gradient-to-br from-blue-500 via-sky-500 to-blue-600 text-white",
             imageSrc: "/images/Industries_v2.png",
-            imageAlt: "Industries card background",
+            imageAlt: "Aerospace capabilities",
           },
         ]}
       />

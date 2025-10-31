@@ -3,10 +3,12 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import "../styles/cgmodeltek_slider_user.css";
 import { ThemeProvider } from "@/lib/theme-provider";
-import Link from "next/link";
-import Image from "next/image";
 import { SiteBackground } from "@/components/sections/SiteBackground";
 import Footer from "@/components/(layout)/Footer";
+import Link from "next/link";
+import Image from "next/image";
+import { Header } from "@/components/layout/Header";
+import { MainWrapper } from "@/components/layout/MainWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -56,34 +58,8 @@ export default function RootLayout({
       <body className={`${inter.variable} ${outfit.variable} antialiased min-h-dvh bg-background text-foreground bg-schematic bg-schematic-vignette`}>
         <SiteBackground />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {/* Floating top menu (transparent, no boxes) */}
-          <nav className="fixed top-0 inset-x-0 z-50">
-            <div className="w-full px-2 sm:px-3 lg:px-4 py-3">
-              <div className="flex items-center gap-6 text-sm font-medium text-white drop-shadow">
-                <Link href="/" className="flex items-center gap-3 sm:ml-6 md:ml-10 lg:ml-24">
-                  <Image
-                    src="/images/logo/cgmodelteklogo.png"
-                    alt="CG Model Tek"
-                    width={520}
-                    height={104}
-                    priority
-                    className="mt-4 h-32 sm:h-36 md:h-40 lg:h-44 w-auto object-contain"
-                  />
-                </Link>
-                <div className="ml-auto flex items-center gap-6">
-                  <Link href="/" className="hover:underline underline-offset-4">Home</Link>
-                  <Link href="/about" className="hover:underline underline-offset-4">About</Link>
-                  <Link href="/services" className="hover:underline underline-offset-4">Services</Link>
-                  <Link href="/equipment" className="hover:underline underline-offset-4">Equipment</Link>
-                  <Link href="/industries" className="hover:underline underline-offset-4">Industries</Link>
-                  <Link href="/blog" className="hover:underline underline-offset-4">Blog</Link>
-                  <Link href="/contact" className="hover:underline underline-offset-4">Contact</Link>
-                </div>
-              </div>
-            </div>
-          </nav>
-
-          <main className="min-h-[70dvh] pt-36">{children}</main>
+          <Header />
+          <MainWrapper>{children}</MainWrapper>
           <Footer />
         </ThemeProvider>
       </body>

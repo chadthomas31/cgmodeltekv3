@@ -176,6 +176,14 @@
       -1px -1px;
   }
 
+  /* Plane schematics overlay (centered SVG, subtle, no-repeat) */
+  .bg-hero-schematics {
+    background-image: url('/images/overlays/plane-schematics.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: min(1200px, 90vw) auto;
+  }
+
   .bg-schematic-dots {
     background-color: var(--paper);
     background-image:
