@@ -35,6 +35,7 @@ export function FxHero({
   teamMembers,
   ctaPrimary,
   ctaSecondary,
+  badgeText,
 }: {
   eyebrow?: string;
   title?: string;
@@ -45,6 +46,7 @@ export function FxHero({
   teamMembers?: TeamMember[];
   ctaPrimary?: { label: string; href: string };
   ctaSecondary?: { label: string; href: string };
+  badgeText?: string;
 }) {
   const [active, setActive] = useState<string | null>(null);
 
@@ -118,15 +120,22 @@ export function FxHero({
               {subtitleBanner}
             </div>
           )}
+          {badgeText?.trim() && (
+            <div className="mt-3 flex justify-center">
+              <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                {badgeText}
+              </span>
+            </div>
+          )}
           {(ctaPrimary || ctaSecondary) && (
-            <div className="mt-6 flex items-center justify-center gap-3">
+            <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 px-4">
               {ctaPrimary && (
-                <Link href={ctaPrimary.href} className="inline-flex items-center justify-center rounded-full bg-white text-black px-5 py-2.5 text-sm font-semibold hover:bg-white/90">
+                <Link href={ctaPrimary.href} className="inline-flex items-center justify-center rounded-full bg-white text-black px-5 py-2.5 text-sm font-semibold hover:bg-white/90 w-full sm:w-auto">
                   {ctaPrimary.label}
                 </Link>
               )}
               {ctaSecondary && (
-                <Link href={ctaSecondary.href} className="inline-flex items-center justify-center rounded-full border border-white/30 text-white px-5 py-2.5 text-sm font-semibold hover:bg-white/10">
+                <Link href={ctaSecondary.href} className="inline-flex items-center justify-center rounded-full border border-white/30 text-white px-5 py-2.5 text-sm font-semibold hover:bg-white/10 w-full sm:w-auto">
                   {ctaSecondary.label}
                 </Link>
               )}

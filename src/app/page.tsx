@@ -21,6 +21,7 @@ export default function Home() {
         eyebrow=""
         title="CG Model Tek"
         subtitleBanner="Advancing Aerodynamics Through Precision and Innovation"
+        badgeText="Tennessee Strong"
         ctaPrimary={{ label: "Request a Quote", href: "/rfq" }}
         ctaSecondary={{ label: "Contact Us", href: "/contact" }}
         titleClassName="font-sans font-semibold tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"

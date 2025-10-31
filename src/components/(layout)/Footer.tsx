@@ -17,10 +17,11 @@ export default function Footer() {
           <div className="opacity-70">© {new Date().getFullYear()} CG Model Tek LLC. All rights reserved.</div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <a href="/rfq" className="rounded-md bg-primary px-4 py-2 text-primary-foreground text-sm">
             Request a Quote
           </a>
+          <span className="text-xs sm:text-sm text-muted-foreground">Proudly Tennessee Strong</span>
         </div>
       </div>
     </footer>
