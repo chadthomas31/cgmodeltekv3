@@ -13,6 +13,7 @@ export function Hero({
   className = "",
   contentPosition = "center",
   topBadge,
+  minHeightClass,
 }: {
   title: string;
   subtitle?: string;
@@ -24,6 +25,7 @@ export function Hero({
   className?: string;
   contentPosition?: "center" | "bottom";
   topBadge?: string;
+  minHeightClass?: string;
 }) {
   return (
     <section className={cn("relative isolate overflow-hidden", className)} aria-label="Hero">
@@ -51,7 +53,8 @@ export function Hero({
       </div>
 
       <div className={cn(
-        "container mx-auto grid min-h-[72svh] px-4 py-16 md:py-24 lg:min-h-[78svh]",
+        "container mx-auto grid px-4 py-16 md:py-24",
+        minHeightClass ?? "min-h-[72svh] lg:min-h-[78svh]",
         contentPosition === "bottom" ? "items-end" : "items-center"
       )}>
         <div className={cn("max-w-2xl", contentPosition === "bottom" && "rounded-xl border border-white/10 bg-black/45 p-4 backdrop-blur-sm") }>

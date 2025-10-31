@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 
 export default function AerospaceSlider() {
   const trackRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const dotsRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const [current, setCurrent] = useState(0);
+  const [isMobileView, setIsMobileView] = useState(false);
 
-  const cards = [
+  // TODO: Replace with actual local images from /public/images
+  // These external URLs should be replaced with optimized local assets
+  const cards = useMemo(() => [
     {
       title: "Designers",
       desc: "Tools that work like you do.",
@@ -45,7 +47,7 @@ export default function AerospaceSlider() {
       thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-art.webp?w=480",
       btn: "Details",
     },
-  ];
+  ], []);
 
   const isMobile = () =>
     typeof window !== "undefined" && window.matchMedia("(max-width:767px)").matches;
@@ -73,12 +75,6 @@ export default function AerospaceSlider() {
         }
       }
     });
-    if (dotsRef.current) {
-      Array.from(dotsRef.current.children).forEach((d, k) => {
-        const dot = d as HTMLElement;
-        dot.classList.toggle("active", k === i);
-      });
-    }
   };
 
   const activate = (i: number, scroll: boolean) => {
@@ -92,17 +88,11 @@ export default function AerospaceSlider() {
     activate(Math.min(Math.max(current + step, 0), cards.length - 1), true);
   };
 
+  // Initialize on mount
   useEffect(() => {
-    if (!dotsRef.current) return;
-    dotsRef.current.innerHTML = "";
-    cards.forEach((_, i) => {
-      const dot = document.createElement("span");
-      dot.className = "dot";
-      dot.onclick = () => activate(i, true);
-      dotsRef.current!.appendChild(dot);
-    });
     toggleUI(0);
     center(0);
+    setIsMobileView(isMobile());
   }, []);
 
   useEffect(() => {
@@ -139,13 +129,10 @@ export default function AerospaceSlider() {
   }, [current]);
 
   useEffect(() => {
-    if (dotsRef.current && isMobile()) {
-      dotsRef.current.hidden = true;
-    }
-  }, []);
-
-  useEffect(() => {
-    const onResize = () => center(current);
+    const onResize = () => {
+      center(current);
+      setIsMobileView(isMobile());
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, [current]);
@@ -196,7 +183,27 @@ export default function AerospaceSlider() {
         </div>
       </div>
 
-      <div className="dots" id="dots" ref={dotsRef} />
+      {/* Dots navigation - using React state instead of DOM manipulation */}
+      {!isMobileView && (
+        <div className="dots" id="dots">
+          {cards.map((_, i) => (
+            <span
+              key={i}
+              className={`dot ${i === current ? 'active' : ''}`}
+              onClick={() => activate(i, true)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Go to slide ${i + 1}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  activate(i, true);
+                }
+              }}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

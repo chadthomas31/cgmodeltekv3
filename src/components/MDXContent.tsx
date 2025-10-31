@@ -16,7 +16,14 @@ export async function MDXContent({ collection, slug }: { collection: string; slu
         )}
       </>
     );
-  } catch {
-    return null;
+  } catch (error) {
+    console.error(`Failed to load MDX content: ${collection}/${slug}`, error);
+    return (
+      <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
+        <p className="text-sm text-destructive">
+          Failed to load content. Please try again later.
+        </p>
+      </div>
+    );
   }
 }

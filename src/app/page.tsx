@@ -22,11 +22,13 @@ export default function Home() {
         title="CG Model Tek"
         subtitleBanner="Advancing Aerodynamics Through Precision and Innovation"
         badgeText="Tennessee Strong"
+        heroLogoSrc="/images/logo/cgmodelteklogo.png"
+        heroLogoClass="h-24 sm:h-32 md:h-40 lg:h-48 xl:h-56"
         ctaPrimary={{ label: "Request a Quote", href: "/rfq" }}
         ctaSecondary={{ label: "Contact Us", href: "/contact" }}
         titleClassName="font-sans font-semibold tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
         teamMembers={[
-          { name: "Chris Athaide", role: "Founder & CEO", img: "", bio: "" },
+          { name: "Chris Athaide", role: "Founder & CEO", img: "/Leadership/Chris_Athaide.png", bio: "" },
           { name: "Naresh Kumar", role: "Chief Financial Officer", img: "", bio: "" },
           { name: "Tony Boyce", role: "Title", img: "", bio: "" },
           { name: "Ian Watts", role: "IT & Information Security Leader", img: "/Leadership/Ian_Watts.Info.sec.ofc.png", bio: "" },

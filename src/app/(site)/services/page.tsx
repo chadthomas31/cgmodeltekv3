@@ -126,6 +126,43 @@ export default function Page() {
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
                   Featured Service
                 </div>
+      {/* JSON-LD FAQ schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What tolerances can you hold?",
+                acceptedAnswer: { "@type": "Answer", text: "Typical ±0.0005 in; tighter possible based on geometry and setup." },
+              },
+              {
+                "@type": "Question",
+                name: "What materials do you machine?",
+                acceptedAnswer: { "@type": "Answer", text: "Aluminum, steels, stainless, titanium, copper alloys, and engineering plastics." },
+              },
+              {
+                "@type": "Question",
+                name: "What file formats do you accept?",
+                acceptedAnswer: { "@type": "Answer", text: "STEP, Parasolid, IGES, and 2D drawings (PDF/DWG/DXF)." },
+              },
+              {
+                "@type": "Question",
+                name: "How fast can you deliver?",
+                acceptedAnswer: { "@type": "Answer", text: "Prototypes in days; production in weeks depending on volume and process." },
+              },
+              {
+                "@type": "Question",
+                name: "Do you provide DFM feedback?",
+                acceptedAnswer: { "@type": "Answer", text: "Yes. We review critical features, tolerances, and fixturing early in the process." },
+              },
+            ],
+          }),
+        }}
+      />
                 <h3 className="mt-2 text-2xl sm:text-3xl font-semibold text-white drop-shadow">
                   {featured.title}
                 </h3>
@@ -155,6 +192,81 @@ export default function Page() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Educational: What is Precision CNC Machining? */}
+      <section className="mt-12 rounded-xl border p-5">
+        <h2 className="headline-3">What is Precision CNC Machining?</h2>
+        <p className="mt-3 text-muted-foreground">
+          CNC (Computer Numerical Control) machining uses computer-guided toolpaths to cut parts from material blocks with high repeatability.
+          Precision CNC machining focuses on achieving tight tolerances, excellent surface finish, and consistent dimensional accuracy — ideal for
+          aerospace components, wind tunnel models, and tooling.
+        </p>
+        <div className="mt-3 text-sm">
+          Learn more about our services:
+          <div className="mt-2 flex flex-wrap gap-2">
+            <Link href="/services/precision-cnc-machining" className="underline">Precision CNC Machining</Link>
+            <span>·</span>
+            <Link href="/services/cnc-milling" className="underline">CNC Milling</Link>
+            <span>·</span>
+            <Link href="/services/cnc-turning" className="underline">CNC Turning</Link>
+            <span>·</span>
+            <Link href="/services/wire-edm" className="underline">Wire EDM</Link>
+            <span>·</span>
+            <Link href="/services/5-axis-machining" className="underline">5 Axis Machining</Link>
+            <span>·</span>
+            <Link href="/services/multi-axis-machining" className="underline">Multi Axis Machining</Link>
+          </div>
+        </div>
+        <div className="mt-4 text-right">
+          <Link href="/rfq" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">Request a Quote</Link>
+        </div>
+      </section>
+
+      {/* Process overview */}
+      <section className="mt-10 rounded-xl border p-5">
+        <h2 className="headline-3">Our Process</h2>
+        <ol className="mt-3 grid gap-3 text-sm text-muted-foreground md:grid-cols-2">
+          <li><span className="font-medium text-foreground">1) RFQ & DFM</span> — Share CAD/drawings; we provide design-for-manufacturing feedback.</li>
+          <li><span className="font-medium text-foreground">2) Programming</span> — Toolpaths created and simulated for accuracy and finish.</li>
+          <li><span className="font-medium text-foreground">3) Machining</span> — Multi-axis strategies minimize setups and variation.</li>
+          <li><span className="font-medium text-foreground">4) Inspection</span> — In‑process checks and final verification per requirements.</li>
+          <li><span className="font-medium text-foreground">5) Finishing</span> — Deburr, surface treatments, and value‑add as specified.</li>
+          <li><span className="font-medium text-foreground">6) Pack & Ship</span> — Protected packaging and documentation.</li>
+        </ol>
+        <div className="mt-4 text-right">
+          <Link href="/rfq" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">Start Your RFQ</Link>
+        </div>
+      </section>
+
+      {/* Materials and tolerances */}
+      <section className="mt-10 rounded-xl border p-5">
+        <h2 className="headline-3">Materials and Tolerances</h2>
+        <p className="mt-3 text-muted-foreground">
+          Typical machining tolerances are ±0.0005 in (±0.013 mm) with tighter tolerances achievable on request depending on geometry and setup.
+          We commonly machine aluminum (2xxx/6xxx/7xxx), steels (including stainless), titanium, copper alloys, and engineering plastics.
+        </p>
+        <div className="mt-4 text-right">
+          <Link href="/rfq" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">Discuss Your Spec</Link>
+        </div>
+      </section>
+
+      {/* Lead times */}
+      <section className="mt-10 rounded-xl border p-5">
+        <h2 className="headline-3">Lead Times</h2>
+        <p className="mt-3 text-muted-foreground">
+          Prototype parts can ship in days depending on complexity and material availability. Production timelines vary by volume and process.
+          We’ll propose schedule options aligned to your milestones.
+        </p>
+      </section>
+
+      {/* Quality & certifications (placeholder for Chris inputs) */}
+      <section className="mt-10 rounded-xl border p-5">
+        <h2 className="headline-3">Quality and Certifications</h2>
+        <p className="mt-3 text-muted-foreground">
+          In‑process inspection and final verification ensure conformance. We will update this section with specific certifications and equipment
+          details provided by leadership.
+        </p>
       </section>
 
       <section className="mt-12 rounded-lg border bg-primary/5 p-6">
@@ -187,8 +299,11 @@ export default function Page() {
         <div className="mt-4">
           <Accordion
             items={[
-              { id: "min", title: "Min/Max volumes?", content: "From 1 to thousands, with scheduling options." },
-              { id: "qa", title: "Quality?", content: "In-process checks, CMM, and lot traceability available." },
+              { id: "tol", title: "What tolerances can you hold?", content: "Typical ±0.0005 in; tighter possible based on geometry and setup." },
+              { id: "materials", title: "What materials do you machine?", content: "Aluminum, steels, stainless, titanium, copper alloys, and engineering plastics." },
+              { id: "files", title: "What file formats do you accept?", content: "STEP, Parasolid, IGES, and 2D drawings (PDF/DWG/DXF)." },
+              { id: "lead", title: "How fast can you deliver?", content: "Prototypes in days; production in weeks depending on volume and process." },
+              { id: "dfm", title: "Do you provide DFM feedback?", content: "Yes. We review critical features, tolerances, and fixturing early in the process." },
             ]}
           />
         </div>

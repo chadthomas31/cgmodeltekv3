@@ -19,6 +19,7 @@ export default function Page() {
         titleClassName="font-sans font-semibold tracking-tight text-4xl sm:text-5xl md:text-6xl"
         overlayClassName="hidden"
         image={{ src: "/images/services-hero_v2.png", alt: "Aerospace schematic interface with aircraft" }}
+        minHeightClass="min-h-[48svh] lg:min-h-[60svh]"
         primary={{ href: "/rfq", label: "Request a Quote" }}
         secondary={{ href: "/contact", label: "Contact" }}
       />

@@ -5,7 +5,14 @@ export async function GET() {
   try {
     const { frontMatter } = await getContentBySlug("about", "index");
     return NextResponse.json({ faq: frontMatter.faq ?? [] });
-  } catch {
-    return NextResponse.json({ faq: [] }, { status: 200 });
+  } catch (error) {
+    console.error("Failed to fetch about content:", error);
+    return NextResponse.json(
+      {
+        faq: [],
+        error: "Failed to load FAQ data"
+      },
+      { status: 500 }
+    );
   }
 }

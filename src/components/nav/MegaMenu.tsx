@@ -7,13 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type TabKey = "about" | "services" | "industries";
+type TabKey = "about" | "services";
 type MenuState = "closed" | "peek" | "open";
 
 const TABS: { key: TabKey; label: string; href: string }[] = [
   { key: "about", label: "About Us", href: "/about" },
   { key: "services", label: "Services", href: "/services" },
-  { key: "industries", label: "Industries", href: "/industries" },
 ];
 
 export default function MegaMenu() {

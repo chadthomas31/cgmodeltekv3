@@ -36,6 +36,8 @@ export function FxHero({
   ctaPrimary,
   ctaSecondary,
   badgeText,
+  heroLogoSrc,
+  heroLogoClass,
 }: {
   eyebrow?: string;
   title?: string;
@@ -47,6 +49,8 @@ export function FxHero({
   ctaPrimary?: { label: string; href: string };
   ctaSecondary?: { label: string; href: string };
   badgeText?: string;
+  heroLogoSrc?: string;
+  heroLogoClass?: string;
 }) {
   const [active, setActive] = useState<string | null>(null);
 
@@ -104,6 +108,18 @@ export function FxHero({
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 max-w-6xl mx-auto">
+          {heroLogoSrc && (
+            <div className="mb-4 sm:mb-6 flex justify-center">
+              <Image
+                src={heroLogoSrc}
+                alt="Site Logo"
+                width={800}
+                height={200}
+                priority
+                className={(heroLogoClass?.trim() || "h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36") + " w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"}
+              />
+            </div>
+          )}
           {eyebrow && (
             <p className="text-sm sm:text-base text-gray-400 uppercase tracking-wider mb-6 font-light">{eyebrow}</p>
           )}

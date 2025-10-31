@@ -18,13 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services/prototyping",
     "/services/production",
     "/services/finishing",
-    "/industries",
-    "/industries/aerospace",
-    "/industries/automotive",
-    "/industries/medical",
-    "/industries/energy",
-    "/industries/consumer",
-    "/industries/defense",
+    "/aerospace",
     "/blog",
     "/contact",
   ];
@@ -38,8 +32,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ): MetadataRoute.Sitemap[number] => ({ url, changeFrequency, priority });
 
   const urls: MetadataRoute.Sitemap = [
-    ...staticRoutes.map((p) => mk(new URL(p, siteUrl).toString(), "weekly", 0.7)),
-    ...blogSlugs.map((slug) => mk(new URL(`/blog/${slug}`, siteUrl).toString(), "weekly", 0.6)),
+    // Homepage - highest priority
+    mk(new URL("/", siteUrl).toString(), "weekly", 1.0),
+    // Aerospace - high priority as core focus
+    mk(new URL("/aerospace", siteUrl).toString(), "weekly", 0.9),
+    // Other static routes
+    ...staticRoutes.filter(p => p !== "/" && p !== "/aerospace").map((p) =>
+      mk(new URL(p, siteUrl).toString(), "weekly", 0.7)
+    ),
+    // Blog posts
+    ...blogSlugs.map((slug) =>
+      mk(new URL(`/blog/${slug}`, siteUrl).toString(), "weekly", 0.6)
+    ),
   ];
   return urls;
 }

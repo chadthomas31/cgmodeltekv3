@@ -12,7 +12,7 @@ const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
-  { href: "/industries", label: "Industries" },
+  { href: "/aerospace", label: "Aerospace" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
@@ -37,8 +37,16 @@ export default function Header() {
             >
               Home
             </Link>
-            {/* Mega tabs: About Us, Services, Industries */}
+            {/* Mega tabs: About Us, Services */}
             <MegaMenu />
+            <Link
+              href="/aerospace"
+              className={cn(
+                "px-3 py-2 rounded-md text-base font-medium hover:bg-muted/60"
+              )}
+            >
+              Aerospace
+            </Link>
             <Link
               href="/blog"
               className={cn(
