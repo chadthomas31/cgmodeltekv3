@@ -27,14 +27,13 @@ const MEGA: Record<string, { label: string; items: { href: string; label: string
       { href: "/services/wire-edm", label: "Wire EDM" },
     ],
   },
-  industries: {
-    label: "Industries",
+  aerospace: {
+    label: "Aerospace",
     items: [
-      { href: "/industries/aerospace", label: "Aerospace & Defense" },
-      { href: "/industries/automotive", label: "Automotive" },
-      { href: "/industries/medical", label: "Medical" },
-      { href: "/industries/energy", label: "Energy" },
-      { href: "/industries", label: "All Industries" },
+      { href: "/aerospace", label: "Aerospace Manufacturing" },
+      { href: "/aerospace#wind-tunnel", label: "Wind Tunnel Models" },
+      { href: "/aerospace#flight-test", label: "Flight Test Components" },
+      { href: "/aerospace#tooling", label: "Aerospace Tooling" },
     ],
   },
 };
@@ -137,16 +136,16 @@ export default function MobileMenu({ nav }: { nav: NavItem[] }) {
                     ),
                   },
                   {
-                    id: "industries",
+                    id: "aerospace",
                     title: (
                       <div className="flex h-11 min-h-[44px] items-center justify-between pr-1">
-                        <span>Industries</span>
+                        <span>Aerospace</span>
                         <ChevronRight className="h-4 w-4 opacity-60" />
                       </div>
                     ),
                     content: (
                       <ul className="py-1">
-                        {MEGA.industries.items.map((i) => (
+                        {MEGA.aerospace.items.map((i) => (
                           <li key={i.href}>
                             <Link
                               href={i.href}

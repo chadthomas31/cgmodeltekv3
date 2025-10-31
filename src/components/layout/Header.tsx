@@ -28,7 +28,7 @@ export function Header() {
             <Link href="/about" className="hover:underline underline-offset-4">About</Link>
             <Link href="/services" className="hover:underline underline-offset-4">Services</Link>
             <Link href="/equipment" className="hover:underline underline-offset-4">Equipment</Link>
-            <Link href="/industries" className="hover:underline underline-offset-4">Industries</Link>
+            <Link href="/aerospace" className="hover:underline underline-offset-4">Aerospace</Link>
             <Link href="/blog" className="hover:underline underline-offset-4">Blog</Link>
             <Link href="/contact" className="hover:underline underline-offset-4">Contact</Link>
             <Link href="/rfq" className="rounded-full bg-white text-black px-4 py-2 text-sm font-semibold hover:bg-white/90">
