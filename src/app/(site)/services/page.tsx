@@ -92,6 +92,8 @@ export default function Page() {
         subtitle="Delivering end-to-end aerospace design, simulation, and modeling solutions — built on precision engineering, innovation, and technical mastery."
         titleClassName="font-sans font-semibold tracking-tight text-4xl sm:text-5xl md:text-6xl"
         overlayClassName="hidden"
+        topBadge="Services"
+        contentPosition="bottom"
         image={{ src: "/images/services-hero_v2.png", alt: "Aerospace schematic interface with aircraft and robotic arm" }}
       />
       <div className="px-4">

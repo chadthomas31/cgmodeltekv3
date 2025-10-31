@@ -12,6 +12,7 @@ export function Hero({
   overlayClassName,
   className = "",
   contentPosition = "center",
+  topBadge,
 }: {
   title: string;
   subtitle?: string;
@@ -22,6 +23,7 @@ export function Hero({
   overlayClassName?: string;
   className?: string;
   contentPosition?: "center" | "bottom";
+  topBadge?: string;
 }) {
   return (
     <section className={cn("relative isolate overflow-hidden", className)} aria-label="Hero">
@@ -36,6 +38,13 @@ export function Hero({
           fetchPriority="high"
         />
         <div className={cn(overlayClassName ?? "hero-overlay", "absolute inset-0")} />
+        {topBadge?.trim() && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-start">
+            <div className="pointer-events-auto m-4 inline-flex items-center rounded-full border border-white/20 bg-black/35 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+              {topBadge}
+            </div>
+          </div>
+        )}
         {contentPosition === "bottom" && (
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         )}
