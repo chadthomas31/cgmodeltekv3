@@ -49,6 +49,16 @@ const MACHINES = [
 ];
 
 export default function Page() {
+  const encodeFilename = (p: string) => {
+    try {
+      if (!p) return p;
+      const parts = p.split("/");
+      const file = parts.pop() as string;
+      return `${parts.join("/")}/${encodeURIComponent(file)}`;
+    } catch {
+      return p;
+    }
+  };
   return (
     <div className="container mx-auto px-4 py-12">
       <Breadcrumbs
@@ -139,12 +149,14 @@ export default function Page() {
       </section>
 
       <section className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {MACHINES.map((m) => (
-          <a key={m.name} href={encodeURI(m.image)} target="_blank" rel="noopener noreferrer" className="group block overflow-hidden rounded-xl border bg-card">
+        {MACHINES.map((m) => {
+          const img = encodeFilename(m.image);
+          return (
+          <a key={m.name} href={img} target="_blank" rel="noopener noreferrer" className="group block overflow-hidden rounded-xl border bg-card">
             <div className="relative aspect-[16/10] w-full bg-muted/40">
               {m.image && (
                 <Image
-                  src={encodeURI(m.image)}
+                  src={img}
                   alt={m.name}
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
@@ -164,7 +176,7 @@ export default function Page() {
               <p className="text-sm text-muted-foreground">{m.blurb}</p>
             </div>
           </a>
-        ))}
+        );})}
       </section>
 
       <section className="mt-12 rounded-lg border bg-primary/5 p-6">
