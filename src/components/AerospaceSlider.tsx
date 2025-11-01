@@ -56,11 +56,13 @@ export default function AerospaceSlider() {
     const wrap = wrapRef.current;
     const card = cardRefs.current[i];
     if (!wrap || !card) return;
-    const axis = isMobile() ? "top" : "left";
-    const size = isMobile() ? "clientHeight" : "clientWidth";
-    const start = isMobile() ? card.offsetTop : card.offsetLeft;
+    const isMobileLayout = isMobile();
+    const axis = isMobileLayout ? "top" : "left";
+    const wrapSize = isMobileLayout ? wrap.clientHeight : wrap.clientWidth;
+    const cardSize = isMobileLayout ? card.clientHeight : card.clientWidth;
+    const start = isMobileLayout ? card.offsetTop : card.offsetLeft;
     wrap.scrollTo({
-      [axis]: start - ((wrap as any)[size] / 2 - (card as any)[size] / 2),
+      [axis]: start - (wrapSize / 2 - cardSize / 2),
       behavior: "smooth",
     });
   };
@@ -169,7 +171,7 @@ export default function AerospaceSlider() {
               }}
               onClick={() => activate(i, true)}
             >
-              <img className="project-card__bg" src={card.bg} alt="" />
+              <img className="project-card__bg" src={card.bg} alt={`${card.title} background`} />
               <div className="project-card__content">
                 <img className="project-card__thumb" src={card.thumb} alt={card.title} />
                 <div>

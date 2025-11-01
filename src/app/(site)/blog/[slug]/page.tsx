@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Prose } from "@/components/Prose";
-import { getContentBySlug, buildFaqJsonLd } from "@/lib/content";
+import { getContentBySlug, buildFaqJsonLd, getCollectionSlugs } from "@/lib/content";
+
+export async function generateStaticParams() {
+  const slugs = await getCollectionSlugs("blog");
+  return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { frontMatter } = await getContentBySlug("blog", params.slug);
   return {
     title: `${frontMatter.title} | Blog | cgmodeltek`,
     description: frontMatter.description,
+    openGraph: {
+      title: `${frontMatter.title} | CG Model Tek Blog`,
+      description: frontMatter.description || "",
+      images: frontMatter.thumb ? [frontMatter.thumb] : [],
+    },
   };
 }
 

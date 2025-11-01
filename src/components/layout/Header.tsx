@@ -1,11 +1,32 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/equipment", label: "Equipment" },
+  { href: "/aerospace", label: "Aerospace" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
 
 export function Header() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
   // Hide header on RFQ pages
   if (pathname && pathname.startsWith("/rfq")) return null;
 
@@ -23,17 +44,62 @@ export function Header() {
               className="mt-2 h-16 sm:h-24 md:h-32 lg:h-40 w-auto object-contain"
             />
           </Link>
+
+          {/* Desktop Navigation */}
           <div className="ml-auto hidden sm:flex items-center gap-4 sm:gap-6">
-            <Link href="/" className="hover:underline underline-offset-4">Home</Link>
-            <Link href="/about" className="hover:underline underline-offset-4">About</Link>
-            <Link href="/services" className="hover:underline underline-offset-4">Services</Link>
-            <Link href="/equipment" className="hover:underline underline-offset-4">Equipment</Link>
-            <Link href="/aerospace" className="hover:underline underline-offset-4">Aerospace</Link>
-            <Link href="/blog" className="hover:underline underline-offset-4">Blog</Link>
-            <Link href="/contact" className="hover:underline underline-offset-4">Contact</Link>
-            <Link href="/rfq" className="rounded-full bg-white text-black px-4 py-2 text-sm font-semibold hover:bg-white/90">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:underline underline-offset-4"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/rfq"
+              className="rounded-full bg-white text-black px-4 py-2 text-sm font-semibold hover:bg-white/90"
+            >
               Request a Quote
             </Link>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="ml-auto sm:hidden">
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <button
+                  className="p-2 hover:bg-white/10 rounded-md transition-colors"
+                  aria-label="Open menu"
+                >
+                  <Menu className="h-6 w-6" />
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetHeader>
+                  <SheetTitle>Menu</SheetTitle>
+                </SheetHeader>
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/rfq"
+                    onClick={() => setOpen(false)}
+                    className="mt-4 rounded-full bg-primary text-primary-foreground px-6 py-3 text-center font-semibold hover:bg-primary/90 transition-colors"
+                  >
+                    Request a Quote
+                  </Link>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

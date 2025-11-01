@@ -1,20 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { submitRFQ } from "@/app/actions";
 import Link from "next/link";
 
-export default function RFQPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="inline-flex items-center rounded-full bg-white text-black px-5 py-2.5 text-sm font-semibold hover:bg-white/90 disabled:opacity-60"
+    >
+      {pending ? "Submitting..." : "Submit request"}
+    </button>
+  );
+}
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setLoading(true);
-    // Simulate submit; integrate API later
-    await new Promise((r) => setTimeout(r, 800));
-    setLoading(false);
-    setSubmitted(true);
-  }
+export default function RFQPage() {
+  const [state, formAction] = useFormState(submitRFQ, null);
 
   return (
     <main className="relative z-30 container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
@@ -33,8 +37,13 @@ export default function RFQPage() {
           <p className="mt-3 text-base sm:text-lg text-white/80">We'll review your requirements and respond within 1-2 business days.</p>
         </header>
 
-        {!submitted ? (
-          <form onSubmit={onSubmit} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 sm:p-8 grid grid-cols-1 gap-4">
+        {!state?.success ? (
+          <form action={formAction} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 sm:p-8 grid grid-cols-1 gap-4">
+            {state?.error && (
+              <div className="rounded-md bg-red-500/10 border border-red-500/30 p-3 text-red-200 text-sm">
+                {state.error}
+              </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm mb-1">Full name</label>
@@ -87,15 +96,14 @@ export default function RFQPage() {
 
             <div className="mt-2 flex items-center justify-between gap-3">
               <p className="text-xs text-white/60">By submitting, you agree to be contacted about your request.</p>
-              <button type="submit" disabled={loading} className="inline-flex items-center rounded-full bg-white text-black px-5 py-2.5 text-sm font-semibold hover:bg-white/90 disabled:opacity-60">
-                {loading ? "Submitting..." : "Submit request"}
-              </button>
+              <SubmitButton />
             </div>
           </form>
         ) : (
           <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 text-center">
+            <div className="mb-4 text-4xl">✓</div>
             <h2 className="text-2xl sm:text-3xl font-semibold">Thanks! Your request has been received.</h2>
-            <p className="mt-2 text-white/80">We'll reach out shortly. If it's urgent, please <Link href="/contact" className="underline">contact us</Link>.</p>
+            <p className="mt-2 text-white/80">{state.message || "We'll reach out shortly. If it's urgent, please contact us."}</p>
             <div className="mt-6">
               <div className="flex items-center justify-center gap-3">
                 <Link href="/" className="rounded-full border border-white/20 px-5 py-2.5 text-sm hover:bg-white/10">Back to Home</Link>

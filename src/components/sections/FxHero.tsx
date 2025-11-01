@@ -164,7 +164,7 @@ export function FxHero({
           onMouseLeave={() => setActive(null)}
         >
           <div className="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {cards.map((card) => (
+            {cards.map((card, index) => (
               <div
                 key={card.title}
                 className={cn(
@@ -176,11 +176,11 @@ export function FxHero({
                 {card.imageSrc && (
                   <Image
                     src={card.imageSrc}
-                    alt={card.imageAlt ?? ""}
+                    alt={card.imageAlt || card.title}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
-                    priority={false}
+                    priority={index < 3}
                   />
                 )}
                 {!card.bareImage && (

@@ -88,6 +88,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${svc.title} | Services | cgmodeltek`,
     description: svc.blurb,
+    openGraph: {
+      title: `${svc.title} | CG Model Tek`,
+      description: svc.blurb,
+      images: [
+        {
+          url: svc.imageSrc,
+          width: 1200,
+          height: 630,
+          alt: svc.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${svc.title} | CG Model Tek`,
+      description: svc.blurb,
+      images: [svc.imageSrc],
+    },
   };
 }
 
