@@ -39,18 +39,6 @@ export default function Page() {
         <MDXContent collection="about" slug="index" />
       </div>
 
-      {/* Two-column section */}
-      <section className="mt-10 grid items-center gap-8 md:grid-cols-2">
-        <div className="space-y-4">
-          <h2 className="headline-2">Built for reliability</h2>
-          <p className="text-muted-foreground">
-            From prototypes to production, our processes emphasize repeatability, quality, and
-            traceability. Our teams integrate robotic tending where it adds throughput and
-            consistency.
-          </p>
-        </div>
-        <div className="aspect-video w-full rounded-lg border bg-muted/40" />
-      </section>
 
       {/* Leadership */}
       <section className="mt-12">
