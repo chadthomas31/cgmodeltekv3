@@ -1,200 +1,317 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Hero } from "@/components/sections/Hero";
 import { StickyQuoteButton } from "@/components/StickyQuoteButton";
+import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Equipment | cgmodeltek",
   description:
-    "5-axis CNC equipment at CG Model Tek: Cincinnati U5, Mazak I-1050T, Mazak 730-5X, VCU 400-5X, I-700. Aerospace-grade precision and repeatability.",
+    "State-of-the-art CNC machining equipment: 5-axis mills, turning centers, Wire EDM, and precision inspection tools.",
 };
 
-const MACHINES = [
-  {
-    name: "Cincinnati U5",
-    travel: "100” X 156” X 40”",
-    blurb:
-      "Massive working envelope ideal for large-scale components, precision fixtures, and model assemblies requiring tight tolerances over extended lengths.",
-    image: "/Equipment/Cincinnati U5_ 100_x_156_x_40.png",
-  },
-  {
-    name: "Mazak I-1050T",
-    travel: "47” X 54” X 35”",
-    blurb:
-      "Powerful and versatile for mid-size aerospace parts, ensuring high-speed, high-accuracy contouring in aluminum and titanium alloys.",
-    image: "/Equipment/Mazak_I-1050T_47_x_54_x_35.png",
-  },
-  {
-    name: "Mazak 730-5X",
-    travel: "33” X 29” X 22”",
-    blurb:
-      "Compact precision for detailed geometry, tooling, and aerodynamic surface finishing.",
-    image: "/Equipment/Mazak_730-5X_33_x_29_x_22.png",
-  },
-  {
-    name: "Mazak VCU 400-5X",
-    travel: "20” X 16” X 20”",
-    blurb:
-      "Ideal for small-format components, prototype runs, and tight-tolerance finishing operations.",
-    image: "/Equipment/Mazak_VCU_400-5X_20_x_16_x_20.jpeg",
-  },
-  {
-    name: "Mazak I-700",
-    travel: "24” X 43” X 23”",
-    blurb:
-      "Delivers efficient 5-axis machining with exceptional surface finish and repeatability, optimized for complex aerospace shapes.",
-    image: "/Equipment/Mazak_i-700_24_x_43_x_23.png",
-  },
-];
-
 export default function Page() {
-  const encodeFilename = (p: string) => {
-    try {
-      if (!p) return p;
-      const parts = p.split("/");
-      const file = parts.pop() as string;
-      return `${parts.join("/")}/${encodeURIComponent(file)}`;
-    } catch {
-      return p;
-    }
+  const equipment = {
+    milling: [
+      {
+        name: "Haas VF-9",
+        specs: "84\" × 40\" × 30\"",
+        image: "/Equipment/Haas_VF-9_84_x_40_x_30.jpeg",
+        description: "High-performance vertical machining center",
+      },
+      {
+        name: "Mazak i-700",
+        specs: "24\" × 43\" × 23\"",
+        image: "/Equipment/Mazak_i-700_24_x_43_x_23.png",
+        description: "Intelligent vertical machining center",
+      },
+      {
+        name: "Cincinnati Lancer",
+        specs: "40\" × 20\" × 21\"",
+        image: "/Equipment/Cincinnati _Lancer_40_x_20_x_21.png",
+        description: "Precision 3-axis machining center",
+      },
+      {
+        name: "Cincinnati Sabre 1000",
+        specs: "40\" × 20\" × 21\"",
+        image: "/Equipment/Cincinnati _Sabre_1000_40_x_20_x_21.png",
+        description: "High-precision vertical mill",
+      },
+      {
+        name: "Cincinnati Sabre 2000",
+        specs: "40\" × 20\" × 21\"",
+        image: "/Equipment/Cincinnati _Sabre_2000_40_x_20_x_21.png",
+        description: "Advanced 3-axis machining",
+      },
+      {
+        name: "Cincinnati U5",
+        specs: "100\" × 156\" × 40\"",
+        image: "/Equipment/Cincinnati U5_ 100_x_156_x_40.png",
+        description: "Large format 5-axis gantry mill",
+      },
+      {
+        name: "Mazak VTC 250",
+        specs: "69\" × 25\" × 26\"",
+        image: "/Equipment/Mazak_VTC_250by50_69_x_25_x_26 - Copy.png",
+        description: "Vertical traveling column machining center",
+      },
+      {
+        name: "Milltronics VKM2",
+        specs: "30\" × 15\" × 11\"",
+        image: "/Equipment/Milltronics_VKM2_30_x_15_x_11.jpeg",
+        description: "Compact vertical machining center",
+      },
+      {
+        name: "Milltronics VKM3",
+        specs: "30\" × 15\" × 11\"",
+        image: "/Equipment/Milltronics_VKM3_30_x_15_x_11.jpeg",
+        description: "Precision 3-axis mill",
+      },
+      {
+        name: "Milltronics VKM4",
+        specs: "30\" × 15\" × 11\"",
+        image: "/Equipment/Milltronics_VKM4_30_x_15_x_11.jpeg",
+        description: "High-accuracy machining center",
+      },
+    ],
+    fiveAxis: [
+      {
+        name: "Mazak 730-5X",
+        specs: "33\" × 29\" × 22\"",
+        image: "/Equipment/Mazak_730-5X_33_x_29_x_22.png",
+        description: "5-axis simultaneous machining center",
+      },
+      {
+        name: "Mazak VCU 400-5X",
+        specs: "20\" × 16\" × 20\"",
+        image: "/Equipment/Mazak_VCU_400-5X_20_x_16_x_20.jpeg",
+        description: "Compact 5-axis vertical machining center",
+      },
+    ],
+    turning: [
+      {
+        name: "Mazak I-1050T",
+        specs: "47\" × 54\" × 35\"",
+        image: "/Equipment/Mazak_I-1050T_47_x_54_x_35.png",
+        description: "Multi-tasking turning center",
+      },
+      {
+        name: "Mazak QTN 450",
+        specs: "20\" Dia. × 80\"",
+        image: "/Equipment/2-Axis/Mazak_QTN_450_20_Dia._x_80.jpeg",
+        description: "2-axis CNC lathe with large capacity",
+      },
+      {
+        name: "Mazak QTN 350M",
+        specs: "16\" Dia. × 48\"",
+        image: "/Equipment/3-Axis (live tooling)/Mazak_QTN_350M_16_Dia._x_48.jpeg",
+        description: "3-axis turning center with live tooling",
+      },
+      {
+        name: "BridgePort EZ Path II",
+        specs: "10\" Dia. × 36\"",
+        image: "/Equipment/2-Axis/BridgePort_EZ_Path_II_10_Dia._x_36.png",
+        description: "2-axis CNC lathe",
+      },
+    ],
+    edm: [
+      {
+        name: "Mitsubishi FA20S",
+        specs: "13\" × 19\" × 11.5\"",
+        image: "/Equipment/4 Axis/Mitsubishi_FA20S_13_x_19_x_11.5.jpeg",
+        description: "4-axis Wire EDM with sub-micron precision",
+      },
+      {
+        name: "Mitsubishi DWC90HA",
+        specs: "10\" × 12\" × 6.5\"",
+        image: "/Equipment/4 Axis/Mitsubishi_DWC90HA_10_x_12_x_6.5.jpeg",
+        description: "4-axis Die-Sink EDM for complex cavities",
+      },
+    ],
   };
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <Breadcrumbs
-        className="mb-6"
-        segments={[
-          { href: "/", label: "Home" },
-          { href: "/equipment", label: "Equipment" },
-        ]}
+    <div className="container mx-auto px-0 pb-12">
+      <Hero
+        className="mb-8"
+        title="Equipment"
+        subtitle="State-of-the-art CNC machining equipment delivering precision, reliability, and repeatability for aerospace and industrial applications."
+        titleClassName="font-sans font-semibold tracking-tight text-4xl sm:text-5xl md:text-6xl"
+        overlayClassName="hidden"
+        topBadge="Equipment"
+        contentPosition="bottom"
+        image={{
+          src: "/Equipment/Mazak_730-5X_33_x_29_x_22.png",
+          alt: "CNC machining equipment",
+        }}
       />
+      <div className="px-4">
+        <Breadcrumbs
+          className="mb-6"
+          segments={[
+            { href: "/", label: "Home" },
+            { href: "/equipment", label: "Equipment" },
+          ]}
+        />
 
-      <header className="max-w-4xl">
-        <h1 className="headline-1">5-Axis CNC Milling Machines</h1>
-        <p className="mt-4 text-muted-foreground">
-          Precision. Flexibility. Aerospace-Grade Results. At CG Model Tek, our multi-axis machining
-          center is designed for absolute precision and repeatability. Using state-of-the-art Mazak and
-          Cincinnati 5-Axis CNC systems, we produce intricate wind-tunnel models, structural components,
-          and aerodynamic test articles that meet the most demanding aerospace standards.
-        </p>
-      </header>
-      {/* SEO-optimized overview section */}
-      <section className="mt-8 max-w-4xl">
-        <h2 className="headline-3">Precision Machining for Aerospace Innovation</h2>
-        <p className="mt-3 text-muted-foreground">
-          At CG Model Tek, our advanced 5-Axis CNC milling machines deliver aerospace-grade precision and flexibility. Using
-          industry-leading Mazak and Cincinnati systems, we produce wind-tunnel models, aerodynamic test components, and
-          flight-ready prototypes that push the boundaries of design and performance.
-        </p>
-        <p className="mt-3 text-muted-foreground">
-          Our multi-axis machining capability allows simultaneous movement across five independent axes, enabling
-          ultra-complex contours and geometries to be machined in a single setup. This eliminates repositioning errors and
-          ensures the tightest possible tolerances for high-speed aerodynamic testing and structural validation.
-        </p>
-
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div>
-            <h3 className="text-xl font-semibold">Equipment & Specifications</h3>
-            <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
-              <li>
-                <div className="font-medium text-foreground">Cincinnati U5</div>
-                <div>Work Envelope: 100” × 156” × 40”</div>
-                <div>Designed for large-scale aerospace assemblies and full wind-tunnel model fabrication. Ideal for maintaining accuracy across long spans and heavy components.</div>
-              </li>
-              <li>
-                <div className="font-medium text-foreground">Mazak I-1050T</div>
-                <div>Work Envelope: 47” × 54” × 35”</div>
-                <div>Powerful 5-axis performance for medium-sized structures and aerodynamic surfaces requiring simultaneous precision cutting.</div>
-              </li>
-              <li>
-                <div className="font-medium text-foreground">Mazak 730-5X</div>
-                <div>Work Envelope: 33” × 29” × 22”</div>
-                <div>Compact, high-speed machining for detailed components, tooling, and complex surface features.</div>
-              </li>
-              <li>
-                <div className="font-medium text-foreground">Mazak VCU 400-5X</div>
-                <div>Work Envelope: 20” × 16” × 20”</div>
-                <div>Ideal for small components and rapid prototyping with exceptional surface finish quality.</div>
-              </li>
-              <li>
-                <div className="font-medium text-foreground">Mazak I-700</div>
-                <div>Work Envelope: 24” × 43” × 23”</div>
-                <div>Versatile platform balancing speed, precision, and reliability for advanced aerospace part manufacturing.</div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold">Core Advantages</h3>
-            <ul className="mt-3 list-disc pl-5 text-sm text-muted-foreground space-y-1">
-              <li>True simultaneous 5-Axis motion for complex, multi-surface geometries</li>
-              <li>Seamless CAD/CAM integration with direct digital workflow</li>
-              <li>High-speed spindles and advanced toolpath optimization</li>
-              <li>Repeatable micron-level accuracy for mission-critical components</li>
-              <li>Expertise in aluminum, titanium, Inconel, and composite machining</li>
-            </ul>
-            <h3 className="mt-6 text-xl font-semibold">Applications</h3>
-            <ul className="mt-3 list-disc pl-5 text-sm text-muted-foreground space-y-1">
-              <li>Wind-tunnel model fabrication</li>
-              <li>Prototype airframe and engine components</li>
-              <li>Aerodynamic surface development</li>
-              <li>Structural test fixtures and tooling</li>
-              <li>Advanced R&amp;D support for aerospace programs</li>
-            </ul>
-          </div>
-        </div>
-
-        <p className="mt-6 text-muted-foreground">
-          <span className="font-medium text-foreground">Precision. Innovation. Excellence.</span> Every component we produce reflects CG Model Tek’s commitment to technical mastery and meticulous attention to detail — transforming complex aerospace concepts into precise, tangible results.
-        </p>
-      </section>
-
-      <section className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {MACHINES.map((m) => {
-          const img = encodeFilename(m.image);
-          return (
-          <a key={m.name} href={img} target="_blank" rel="noopener noreferrer" className="group block overflow-hidden rounded-xl border bg-card">
-            <div className="relative aspect-[16/10] w-full bg-muted/40">
-              {m.image && (
-                <Image
-                  src={img}
-                  alt={m.name}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  priority={false}
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 w-full p-4 text-white">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">{m.name}</h3>
-                  <span className="rounded bg-white/15 px-2 py-0.5 text-xs">{m.travel}</span>
+        {/* 5-Axis Machining Centers */}
+        <section className="mt-8">
+          <h2 className="headline-2 mb-4">5-Axis Machining Centers</h2>
+          <p className="mb-6 text-muted-foreground">
+            Our 5-axis simultaneous machining centers deliver unmatched precision for complex
+            geometries, sculptured surfaces, and multi-sided components — all in a single setup.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {equipment.fiveAxis.map((machine) => (
+              <div key={machine.name} className="overflow-hidden rounded-xl border bg-card">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={machine.image}
+                    alt={machine.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{machine.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-primary">{machine.specs}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{machine.description}</p>
                 </div>
               </div>
-            </div>
-            <div className="p-4">
-              <p className="text-sm text-muted-foreground">{m.blurb}</p>
-            </div>
-          </a>
-        );})}
-      </section>
+            ))}
+          </div>
+        </section>
 
-      <section className="mt-12 rounded-lg border bg-primary/5 p-6">
-        <h2 className="headline-3">Process Highlights</h2>
-        <ul className="mt-3 grid gap-2 text-sm text-muted-foreground md:grid-cols-2">
-          <li>True simultaneous 5-Axis machining</li>
-          <li>Advanced CAD/CAM integration for digital-to-physical fidelity</li>
-          <li>High-speed spindles with micron-level accuracy</li>
-          <li>Adaptive toolpath optimization to minimize cycle times</li>
-          <li>Material versatility: Aluminum, titanium, Inconel, composites</li>
-        </ul>
-        <div className="mt-6 text-right">
-          <Link href="/rfq" className="rounded-md bg-primary px-4 py-2 text-primary-foreground">
-            Request a Quote
-          </Link>
-        </div>
-      </section>
+        {/* 3-Axis Milling */}
+        <section className="mt-12">
+          <h2 className="headline-2 mb-4">3-Axis & 4-Axis Milling Centers</h2>
+          <p className="mb-6 text-muted-foreground">
+            A diverse fleet of vertical machining centers providing flexibility for parts ranging
+            from small precision components to large aerospace structures.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {equipment.milling.map((machine) => (
+              <div key={machine.name} className="overflow-hidden rounded-xl border bg-card">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={machine.image}
+                    alt={machine.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{machine.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-primary">{machine.specs}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{machine.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
+        {/* Turning Centers */}
+        <section className="mt-12">
+          <h2 className="headline-2 mb-4">CNC Turning Centers</h2>
+          <p className="mb-6 text-muted-foreground">
+            Precision lathes with 2-axis and 3-axis live tooling capabilities for cylindrical
+            components, shafts, housings, and complex turned parts.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {equipment.turning.map((machine) => (
+              <div key={machine.name} className="overflow-hidden rounded-xl border bg-card">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={machine.image}
+                    alt={machine.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{machine.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-primary">{machine.specs}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{machine.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* EDM */}
+        <section className="mt-12">
+          <h2 className="headline-2 mb-4">EDM (Electrical Discharge Machining)</h2>
+          <p className="mb-6 text-muted-foreground">
+            Mitsubishi 4-axis Wire and Die-Sink EDM systems for ultra-precision cutting, intricate
+            geometries, and fine surface finishes in conductive materials.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {equipment.edm.map((machine) => (
+              <div key={machine.name} className="overflow-hidden rounded-xl border bg-card">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={machine.image}
+                    alt={machine.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{machine.name}</h3>
+                  <p className="mt-1 text-sm font-medium text-primary">{machine.specs}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{machine.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Capabilities Summary */}
+        <section className="mt-12 rounded-xl border bg-primary/5 p-6">
+          <h3 className="headline-3">Equipment Capabilities</h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <div className="text-3xl font-bold text-primary">20+</div>
+              <div className="text-sm text-muted-foreground">CNC Machines</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-primary">5-Axis</div>
+              <div className="text-sm text-muted-foreground">Simultaneous Machining</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-primary">±0.0005"</div>
+              <div className="text-sm text-muted-foreground">Typical Tolerance</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-primary">156"</div>
+              <div className="text-sm text-muted-foreground">Max Travel (Gantry)</div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="mt-12 rounded-lg border bg-card p-6">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div>
+              <h3 className="headline-3">Ready to discuss your project?</h3>
+              <p className="text-sm text-muted-foreground">
+                Our equipment and expertise are ready to support your most demanding applications.
+              </p>
+            </div>
+            <Link
+              href="/rfq"
+              className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground"
+            >
+              Request a Quote
+            </Link>
+          </div>
+        </section>
+      </div>
       <StickyQuoteButton />
     </div>
   );
