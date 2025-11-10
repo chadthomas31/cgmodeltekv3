@@ -5,8 +5,6 @@ import "../styles/cgmodeltek_slider_user.css";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { SiteBackground } from "@/components/sections/SiteBackground";
 import Footer from "@/components/(layout)/Footer";
-import Link from "next/link";
-import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { MainWrapper } from "@/components/layout/MainWrapper";
 import { OrganizationSchema } from "@/components/StructuredData";
@@ -65,10 +63,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${outfit.variable} antialiased min-h-dvh bg-background text-foreground bg-schematic bg-schematic-vignette`}>
+      <body
+        className={`${inter.variable} ${outfit.variable} antialiased min-h-dvh bg-background text-foreground bg-schematic bg-schematic-vignette`}
+      >
         <OrganizationSchema siteUrl={siteUrl} />
         <SiteBackground />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Header />
           <MainWrapper>{children}</MainWrapper>
           <Footer />

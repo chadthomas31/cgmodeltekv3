@@ -35,13 +35,11 @@ export function CardAnimated({
         "h-[60vh] sm:h-[65vh] lg:h-[70vh] min-h-[380px]",
         "transition-all duration-300 ease-in-out will-change-transform",
         "hover:scale-[1.02] hover:shadow-2xl",
-        className
+        className,
       )}
     >
       {/* Animation Background */}
-      <div className="absolute inset-0">
-        {animation}
-      </div>
+      <div className="absolute inset-0">{animation}</div>
 
       {/* Gradient overlay for readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70" />
@@ -52,16 +50,15 @@ export function CardAnimated({
       {/* Content wrapper */}
       <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-8">
         <div className="space-y-3">
-          <h3 className={cn(
-            "text-2xl sm:text-3xl font-semibold tracking-tight",
-            textColor
-          )}>
+          <h3 className={cn("text-2xl sm:text-3xl font-semibold tracking-tight", textColor)}>
             {title}
           </h3>
-          <p className={cn(
-            "text-sm sm:text-base opacity-90 max-w-[42ch] leading-relaxed",
-            textColor === "text-white" ? "text-gray-200" : "text-gray-700"
-          )}>
+          <p
+            className={cn(
+              "text-sm sm:text-base opacity-90 max-w-[42ch] leading-relaxed",
+              textColor === "text-white" ? "text-gray-200" : "text-gray-700",
+            )}
+          >
             {description}
           </p>
 
@@ -74,11 +71,13 @@ export function CardAnimated({
                 "hover:scale-105",
                 textColor === "text-white"
                   ? "border-white bg-white text-black hover:bg-gray-100"
-                  : "border-black bg-black text-white hover:bg-gray-800"
+                  : "border-black bg-black text-white hover:bg-gray-800",
               )}
             >
               {cta}
-              <span aria-hidden className="text-base">→</span>
+              <span aria-hidden className="text-base">
+                →
+              </span>
             </Link>
           </div>
         </div>
@@ -102,7 +101,7 @@ export function AnimatedCardGrid({
       className={cn(
         "grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
         "max-w-[1400px] mx-auto",
-        className
+        className,
       )}
     >
       {cards.map((card, index) => (

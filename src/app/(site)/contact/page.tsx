@@ -3,7 +3,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with CG Model Tek for precision manufacturing and aerospace modeling services.",
+  description:
+    "Get in touch with CG Model Tek for precision manufacturing and aerospace modeling services.",
 };
 
 export default function Page() {
@@ -51,7 +52,8 @@ export default function Page() {
         <div className="rounded-lg border bg-card p-6">
           <h2 className="headline-3">Get a Quote</h2>
           <p className="mt-4 text-sm text-muted-foreground">
-            Have a project in mind? Send us your requirements and we'll get back to you with a detailed quote.
+            Have a project in mind? Send us your requirements and we&apos;ll get back to you with a
+            detailed quote.
           </p>
         </div>
       </div>

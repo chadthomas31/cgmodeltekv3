@@ -5,13 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -48,11 +42,7 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="ml-auto hidden sm:flex items-center gap-4 sm:gap-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="hover:underline underline-offset-4"
-              >
+              <Link key={link.href} href={link.href} className="hover:underline underline-offset-4">
                 {link.label}
               </Link>
             ))}

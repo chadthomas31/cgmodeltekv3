@@ -60,6 +60,9 @@ importers:
       '@axe-core/cli':
         specifier: ^4.8.4
         version: 4.11.0
+      '@eslint/eslintrc':
+        specifier: ^3.3.1
+        version: 3.3.1
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.16
@@ -1040,8 +1043,8 @@ packages:
   character-reference-invalid@2.0.1:
     resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==}
 
-  chromedriver@142.0.0:
-    resolution: {integrity: sha512-BlMMPFOKAOYOT23tjtAjvci57gyYcasKqd/3yGKOjGMEbFZa5kfwoNcUzwL/5ugZ932MJX1fW/j8zk5KD5mHBw==}
+  chromedriver@142.0.1:
+    resolution: {integrity: sha512-Cgm5rPQ1aNdkoA4wiwJiKweQErbv+8w5xnN5SA5EIAxN0bcZzWrbcFtwlaKG3DUcJJYQKKArLe4vg+s85wmhfQ==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -2799,7 +2802,7 @@ snapshots:
     dependencies:
       '@axe-core/webdriverjs': 4.11.0(selenium-webdriver@4.35.0)
       axe-core: 4.11.0
-      chromedriver: 142.0.0
+      chromedriver: 142.0.1
       colors: 1.4.0
       commander: 9.5.0
       dotenv: 17.2.3
@@ -3726,7 +3729,7 @@ snapshots:
 
   character-reference-invalid@2.0.1: {}
 
-  chromedriver@142.0.0:
+  chromedriver@142.0.1:
     dependencies:
       '@testim/chrome-version': 1.1.4
       axios: 1.12.2
