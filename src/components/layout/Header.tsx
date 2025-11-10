@@ -18,11 +18,7 @@ const navLinks = [
 ];
 
 export function Header() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
-  // Hide header on RFQ pages
-  if (pathname && pathname.startsWith("/rfq")) return null;
 
   return (
     <nav className="fixed top-0 inset-x-0 z-50">
@@ -35,7 +31,7 @@ export function Header() {
               width={520}
               height={104}
               priority
-              className="mt-2 h-16 sm:h-24 md:h-32 lg:h-40 w-auto object-contain"
+              className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto object-contain"
             />
           </Link>
 

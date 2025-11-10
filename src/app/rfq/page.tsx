@@ -3,6 +3,22 @@
 import { useFormState, useFormStatus } from "react-dom";
 import { submitRFQ } from "@/app/actions";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { useSearchParams } from "next/navigation";
+
+const services = [
+  "CNC Milling",
+  "CNC Turning",
+  "Wire EDM",
+  "CNC Die-Sink EDM",
+  "5 Axis Machining",
+  "Multi Axis Machining",
+  "Aluminum CNC Machining",
+  "Stainless Steel Machining",
+  "Prototype Machining",
+  "Value Added Services",
+  "Other",
+];
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -19,20 +35,26 @@ function SubmitButton() {
 
 export default function RFQPage() {
   const [state, formAction] = useFormState(submitRFQ, null);
+  const searchParams = useSearchParams();
+  const preselectedService = searchParams?.get("service") || "";
 
   return (
     <main className="relative z-30 container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
       <div className="max-w-5xl mx-auto">
+        {/* Breadcrumbs */}
+        <Breadcrumbs
+          segments={[
+            { href: "/", label: "Home" },
+            { href: "/rfq", label: "Request a Quote" },
+          ]}
+          className="mb-6"
+        />
+
         {/* Quick exits */}
         <div className="mb-4 flex items-center justify-between text-sm">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="underline hover:opacity-90">
-              ← Back to Home
-            </Link>
-            <Link href="/services" className="underline hover:opacity-90">
-              Browse Services
-            </Link>
-          </div>
+          <Link href="/services" className="underline hover:opacity-90">
+            Browse Services
+          </Link>
           <Link href="/contact" className="underline hover:opacity-90">
             Need help? Contact
           </Link>
@@ -45,111 +67,166 @@ export default function RFQPage() {
           <p className="mt-3 text-base sm:text-lg text-white/80">
             We&apos;ll review your requirements and respond within 1-2 business days.
           </p>
+
+          {/* Form Progress Steps */}
+          <div className="mt-8 flex items-center justify-center gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500 text-white font-semibold">
+                1
+              </div>
+              <span className="hidden sm:inline">Contact Info</span>
+            </div>
+            <div className="h-px w-8 sm:w-16 bg-white/20" />
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white/60 font-semibold">
+                2
+              </div>
+              <span className="hidden sm:inline text-white/60">Project Details</span>
+            </div>
+            <div className="h-px w-8 sm:w-16 bg-white/20" />
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white/60 font-semibold">
+                3
+              </div>
+              <span className="hidden sm:inline text-white/60">Submit</span>
+            </div>
+          </div>
         </header>
 
         {!state?.success ? (
           <form
             action={formAction}
-            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 sm:p-8 grid grid-cols-1 gap-4"
+            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 sm:p-8 grid grid-cols-1 gap-6"
           >
             {state?.error && (
               <div className="rounded-md bg-red-500/10 border border-red-500/30 p-3 text-red-200 text-sm">
                 {state.error}
               </div>
             )}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            {/* Section 1: Contact Information */}
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold border-b border-white/10 pb-2">
+                1. Contact Information
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm mb-1">Full name</label>
+                  <input
+                    name="name"
+                    required
+                    placeholder="Jane Doe"
+                    className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm mb-1">Company</label>
+                  <input
+                    name="company"
+                    placeholder="Your company"
+                    className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm mb-1">Email</label>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm mb-1">Phone</label>
+                  <input
+                    name="phone"
+                    type="tel"
+                    placeholder="(555) 000-0000"
+                    className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Section 2: Project Details */}
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold border-b border-white/10 pb-2">
+                2. Project Details
+              </h2>
+
               <div>
-                <label className="block text-sm mb-1">Full name</label>
+                <label className="block text-sm mb-1">Service Interested In</label>
+                <select
+                  name="service"
+                  defaultValue={preselectedService}
+                  className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                >
+                  <option value="">Select a service (optional)</option>
+                  {services.map((service) => (
+                    <option key={service} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm mb-1">Project title</label>
                 <input
-                  name="name"
+                  name="title"
                   required
-                  placeholder="Jane Doe"
+                  placeholder="Wind tunnel model machining"
                   className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
               </div>
-              <div>
-                <label className="block text-sm mb-1">Company</label>
-                <input
-                  name="company"
-                  placeholder="Your company"
-                  className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                />
-              </div>
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm mb-1">Email</label>
-                <input
-                  name="email"
-                  type="email"
+                <label className="block text-sm mb-1">Project details</label>
+                <textarea
+                  name="details"
                   required
-                  placeholder="you@example.com"
+                  rows={6}
+                  placeholder="Materials, tolerances, quantity, target dates, certifications, etc."
                   className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
               </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm mb-1">Desired timeline</label>
+                  <input
+                    name="timeline"
+                    placeholder="e.g., 4-6 weeks"
+                    className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm mb-1">Estimated budget</label>
+                  <input
+                    name="budget"
+                    placeholder="$10,000 - $25,000"
+                    className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="block text-sm mb-1">Phone</label>
-                <input
-                  name="phone"
-                  type="tel"
-                  placeholder="(555) 000-0000"
-                  className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                />
+                <label className="block text-sm mb-1">Attachments</label>
+                <div className="rounded-md border border-dashed border-white/20 bg-black/20 p-4 text-sm text-white/80">
+                  File upload coming soon. You can email drawings to{" "}
+                  <a href="mailto:info@cgmodeltek.com" className="underline">
+                    info@cgmodeltek.com
+                  </a>
+                  .
+                </div>
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm mb-1">Project title</label>
-              <input
-                name="title"
-                required
-                placeholder="Wind tunnel model machining"
-                className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm mb-1">Project details</label>
-              <textarea
-                name="details"
-                required
-                rows={6}
-                placeholder="Materials, tolerances, quantity, target dates, certifications, etc."
-                className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm mb-1">Desired timeline</label>
-                <input
-                  name="timeline"
-                  placeholder="e.g., 4-6 weeks"
-                  className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-1">Estimated budget</label>
-                <input
-                  name="budget"
-                  placeholder="$10,000 - $25,000"
-                  className="w-full rounded-md bg-black/20 border border-white/15 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm mb-1">Attachments</label>
-              <div className="rounded-md border border-dashed border-white/20 bg-black/20 p-4 text-sm text-white/80">
-                File upload coming soon. You can email drawings to{" "}
-                <a href="mailto:info@cgmodeltek.com" className="underline">
-                  info@cgmodeltek.com
-                </a>
-                .
-              </div>
-            </div>
-
+            {/* Section 3: Submit */}
             <div className="mt-2 flex items-center justify-between gap-3">
               <p className="text-xs text-white/60">
                 By submitting, you agree to be contacted about your request.
