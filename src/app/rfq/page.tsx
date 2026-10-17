@@ -5,6 +5,21 @@ import { submitRFQ } from "@/app/actions";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+
+// Service slug to label mapping
+const serviceMap: Record<string, string> = {
+  "cnc-milling": "CNC Milling",
+  "cnc-turning": "CNC Turning",
+  "wire-edm": "Wire EDM",
+  "cnc-die-sink-edm": "CNC Die-Sink EDM",
+  "5-axis-machining": "5 Axis Machining",
+  "multi-axis-machining": "Multi Axis Machining",
+  "aluminum-cnc-machining": "Aluminum CNC Machining",
+  "stainless-steel-machining": "Stainless Steel Machining",
+  "prototype-machining": "Prototype Machining",
+  "value-added": "Value Added Services",
+};
 
 const services = [
   "CNC Milling",
@@ -33,10 +48,11 @@ function SubmitButton() {
   );
 }
 
-export default function RFQPage() {
+function RFQFormContent() {
   const [state, formAction] = useFormState(submitRFQ, null);
   const searchParams = useSearchParams();
-  const preselectedService = searchParams?.get("service") || "";
+  const serviceSlug = searchParams?.get("service") || "";
+  const preselectedService = serviceMap[serviceSlug] || "";
 
   return (
     <main className="relative z-30 container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
@@ -263,5 +279,21 @@ export default function RFQPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function RFQPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="relative z-30 container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="text-lg">Loading...</p>
+          </div>
+        </main>
+      }
+    >
+      <RFQFormContent />
+    </Suspense>
   );
 }

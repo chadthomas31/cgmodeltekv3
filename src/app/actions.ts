@@ -12,6 +12,7 @@ export async function submitRFQ(
     email: formData.get("email") as string,
     phone: formData.get("phone") as string,
     company: formData.get("company") as string,
+    service: formData.get("service") as string,
     title: formData.get("title") as string,
     details: formData.get("details") as string,
     timeline: formData.get("timeline") as string,
