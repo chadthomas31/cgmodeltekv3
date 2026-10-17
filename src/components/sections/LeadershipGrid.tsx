@@ -48,7 +48,10 @@ export function LeadershipGrid({
   return (
     <div className={cn(gridClassName ?? "grid gap-6 sm:grid-cols-2 lg:grid-cols-4", className)}>
       {items.map((p, i) => {
-        const slug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+        const slug = p.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
         const key = `${slug}-${i}`;
         const id = idFromName ? slug : undefined;
         const href = linkToBase ? `${linkToBase}#${slug}` : undefined;
@@ -63,13 +66,19 @@ export function LeadershipGrid({
               <>
                 <div className="relative mb-4 overflow-hidden rounded-lg">
                   <div className="aspect-square w-full bg-muted/50" />
-                  <LeadershipImage name={p.name} img={p.img} className="object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                  <LeadershipImage
+                    name={p.name}
+                    img={p.img}
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold leading-tight">{p.name}</h3>
                   <p className="text-sm text-muted-foreground">{p.role}</p>
                   {p.bio && (
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{preview(p.bio)}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {preview(p.bio)}
+                    </p>
                   )}
                   <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-primary">
                     Read more <span aria-hidden>→</span>
@@ -82,11 +91,17 @@ export function LeadershipGrid({
 
         const classNames = cn(
           "group rounded-xl border bg-card p-3 text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg",
-          cardClassName
+          cardClassName,
         );
 
         return href ? (
-          <Link key={key} id={id} href={href} className={classNames} aria-label={`View profile for ${p.name}`}>
+          <Link
+            key={key}
+            id={id}
+            href={href}
+            className={classNames}
+            aria-label={`View profile for ${p.name}`}
+          >
             {content}
           </Link>
         ) : (

@@ -66,12 +66,7 @@ interface ServiceSchemaProps {
   provider: string;
 }
 
-export function ServiceSchema({
-  name,
-  description,
-  url,
-  provider,
-}: ServiceSchemaProps) {
+export function ServiceSchema({ name, description, url, provider }: ServiceSchemaProps) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",

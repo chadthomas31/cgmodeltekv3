@@ -10,7 +10,7 @@ export type FrontMatter = {
   thumb?: string;
   updatedAt?: string;
   faq?: FAQ[];
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -41,7 +41,7 @@ export async function getContentList<T extends FrontMatter = FrontMatter>(collec
       const { data } = matter(raw);
       const fm = data as T;
       return { slug, frontMatter: fm };
-    })
+    }),
   );
   return items.sort((a, b) => {
     const ad = Date.parse(a.frontMatter.updatedAt || "1970-01-01");
@@ -50,7 +50,10 @@ export async function getContentList<T extends FrontMatter = FrontMatter>(collec
   });
 }
 
-export async function getContentBySlug<T extends FrontMatter = FrontMatter>(collection: string, slug: string) {
+export async function getContentBySlug<T extends FrontMatter = FrontMatter>(
+  collection: string,
+  slug: string,
+) {
   const base = path.join(CONTENT_DIR, collection);
   const mdxPath = path.join(base, `${slug}.mdx`);
   const mdPath = path.join(base, `${slug}.md`);

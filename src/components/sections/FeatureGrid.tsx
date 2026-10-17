@@ -9,7 +9,10 @@ export function FeatureGrid({ features = [] as Feature[] }) {
         { title: "Robotic tending", description: "Throughput and repeatability where it matters." },
         { title: "Fast turn", description: "Prototypes in days with practical DFM guidance." },
         { title: "Multi-axis", description: "Fewer setups, higher geometric fidelity." },
-        { title: "Certified partners", description: "Finishes and treatments to spec via partners." },
+        {
+          title: "Certified partners",
+          description: "Finishes and treatments to spec via partners.",
+        },
       ];
   return (
     <section aria-label="Key features" className="py-10">

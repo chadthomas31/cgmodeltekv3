@@ -10,9 +10,9 @@ export async function GET() {
     return NextResponse.json(
       {
         faq: [],
-        error: "Failed to load FAQ data"
+        error: "Failed to load FAQ data",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

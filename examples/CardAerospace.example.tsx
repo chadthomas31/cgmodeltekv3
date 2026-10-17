@@ -28,14 +28,16 @@ export function MultipleCardsExample() {
   const aerospaceServices = [
     {
       title: "Prototype Development",
-      description: "High-precision aerospace prototypes with tolerances down to ±0.001\". From concept to reality.",
+      description:
+        'High-precision aerospace prototypes with tolerances down to ±0.001". From concept to reality.',
       href: "/services/prototyping",
       cta: "View Process",
       backgroundSrc: "/assets/aerospace-prototype.png",
     },
     {
       title: "Production Manufacturing",
-      description: "Scale from prototype to production with consistent quality. AS9100 certified processes.",
+      description:
+        "Scale from prototype to production with consistent quality. AS9100 certified processes.",
       href: "/services/production",
       cta: "See Capabilities",
       backgroundSrc: "/assets/aerospace-production.png",
@@ -49,7 +51,8 @@ export function MultipleCardsExample() {
     },
     {
       title: "CNC Machining",
-      description: "5-axis CNC capabilities for aerospace-grade materials including titanium and Inconel.",
+      description:
+        "5-axis CNC capabilities for aerospace-grade materials including titanium and Inconel.",
       href: "/services/cnc-machining",
       cta: "View Equipment",
       backgroundSrc: "/assets/aerospace-cnc.png",

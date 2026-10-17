@@ -8,7 +8,11 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const { frontMatter } = await getContentBySlug("blog", params.slug);
   return {
     title: `${frontMatter.title} | Blog | cgmodeltek`,
@@ -37,7 +41,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
       <h1 className="headline-1">{frontMatter.title}</h1>
       {frontMatter.updatedAt && (
-        <p className="mt-2 text-xs text-muted-foreground">Updated {new Date(frontMatter.updatedAt).toLocaleDateString()}</p>
+        <p className="mt-2 text-xs text-muted-foreground">
+          Updated {new Date(frontMatter.updatedAt).toLocaleDateString()}
+        </p>
       )}
 
       <div className="mt-8">
@@ -45,7 +51,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
       </div>
 
       {faqJsonLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
       )}
     </div>
   );
