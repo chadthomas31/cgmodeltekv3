@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export type AerospaceCardProps = {
@@ -34,15 +35,18 @@ export function CardAerospace({
         "h-[60vh] sm:h-[65vh] lg:h-[70vh] min-h-[380px]",
         "transition-all duration-300 ease-in-out will-change-transform",
         "hover:scale-[1.02] hover:shadow-2xl",
-        className
+        className,
       )}
     >
       {/* Background image */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src={backgroundSrc}
           alt={backgroundAlt}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          priority={false}
         />
       </div>
 
@@ -55,9 +59,7 @@ export function CardAerospace({
       {/* Content wrapper */}
       <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-8">
         <div className="space-y-3">
-          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-            {title}
-          </h3>
+          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">{title}</h3>
           <p className="text-sm sm:text-base text-gray-200 max-w-[42ch] leading-relaxed">
             {description}
           </p>
@@ -70,11 +72,13 @@ export function CardAerospace({
                 "bg-white text-black",
                 "border-2 border-white",
                 "transition-all duration-200",
-                "hover:bg-gray-100 hover:scale-105"
+                "hover:bg-gray-100 hover:scale-105",
               )}
             >
               {cta}
-              <span aria-hidden className="text-base">→</span>
+              <span aria-hidden className="text-base">
+                →
+              </span>
             </Link>
           </div>
         </div>
@@ -99,7 +103,7 @@ export function AerospaceCardGrid({
       className={cn(
         "grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
         "max-w-[1400px] mx-auto",
-        className
+        className,
       )}
     >
       {cards.map((card, index) => (

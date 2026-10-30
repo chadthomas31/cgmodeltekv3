@@ -52,18 +52,22 @@ export function Hero({
         )}
       </div>
 
-      <div className={cn(
-        "container mx-auto grid px-4 py-16 md:py-24",
-        minHeightClass ?? "min-h-[72svh] lg:min-h-[78svh]",
-        contentPosition === "bottom" ? "items-end" : "items-center"
-      )}>
-        <div className={cn("max-w-2xl", contentPosition === "bottom" && "rounded-xl border border-white/10 bg-black/45 p-4 backdrop-blur-sm") }>
-          <h1 className={cn(titleClassName ?? "headline-1", "text-foreground") }>
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="mt-4 text-lg text-muted-foreground">{subtitle}</p>
+      <div
+        className={cn(
+          "container mx-auto grid px-4 py-16 md:py-24",
+          minHeightClass ?? "min-h-[72svh] lg:min-h-[78svh]",
+          contentPosition === "bottom" ? "items-end" : "items-center",
+        )}
+      >
+        <div
+          className={cn(
+            "max-w-2xl",
+            contentPosition === "bottom" &&
+              "rounded-xl border border-white/10 bg-black/45 p-4 backdrop-blur-sm",
           )}
+        >
+          <h1 className={cn(titleClassName ?? "headline-1", "text-foreground")}>{title}</h1>
+          {subtitle && <p className="mt-4 text-lg text-muted-foreground">{subtitle}</p>}
 
           {(primary || secondary) && (
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -89,7 +93,10 @@ export function Hero({
       </div>
 
       {/* Vignette edge */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-schematic-vignette" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-schematic-vignette"
+        aria-hidden
+      />
     </section>
   );
 }

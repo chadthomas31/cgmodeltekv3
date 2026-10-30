@@ -35,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const mk = (
     url: string,
     changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>,
-    priority: number
+    priority: number,
   ): MetadataRoute.Sitemap[number] => ({ url, changeFrequency, priority });
 
   const urls: MetadataRoute.Sitemap = [
@@ -44,13 +44,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Aerospace - high priority as core focus
     mk(new URL("/aerospace", siteUrl).toString(), "weekly", 0.9),
     // Other static routes
-    ...staticRoutes.filter(p => p !== "/" && p !== "/aerospace").map((p) =>
-      mk(new URL(p, siteUrl).toString(), "weekly", 0.7)
-    ),
+    ...staticRoutes
+      .filter((p) => p !== "/" && p !== "/aerospace")
+      .map((p) => mk(new URL(p, siteUrl).toString(), "weekly", 0.7)),
     // Blog posts
-    ...blogSlugs.map((slug) =>
-      mk(new URL(`/blog/${slug}`, siteUrl).toString(), "weekly", 0.6)
-    ),
+    ...blogSlugs.map((slug) => mk(new URL(`/blog/${slug}`, siteUrl).toString(), "weekly", 0.6)),
   ];
   return urls;
 }

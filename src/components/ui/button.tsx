@@ -12,9 +12,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant === "outline"
         ? "border bg-background hover:bg-accent"
         : "bg-primary text-primary-foreground hover:opacity-90";
-    return (
-      <button ref={ref} className={`${base} ${styles} ${className}`} {...props} />
-    );
-  }
+    return <button ref={ref} className={`${base} ${styles} ${className}`} {...props} />;
+  },
 );
 Button.displayName = "Button";

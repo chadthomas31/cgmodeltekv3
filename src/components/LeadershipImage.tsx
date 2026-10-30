@@ -16,8 +16,14 @@ export function LeadershipImage({
     if (img && img.trim()) return [img.trim()];
     const encoded = encodeURIComponent(name);
     const underscored = name.replace(/\s+/g, "_");
-    const cleanedLower = name.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
-    const hyphenLower = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    const cleanedLower = name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "");
+    const hyphenLower = name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
     const exts = ["png", "webp"] as const;
     const patterns = [
       encoded, // "Chris%20Athaide"

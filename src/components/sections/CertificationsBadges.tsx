@@ -12,7 +12,10 @@ export function CertificationsBadges({
       <div className="container mx-auto px-4">
         <div className="grid gap-4 sm:grid-cols-3">
           {items.map((i) => (
-            <div key={i.label} className="flex items-center justify-center rounded-lg border bg-muted/20 p-6 text-sm font-semibold">
+            <div
+              key={i.label}
+              className="flex items-center justify-center rounded-lg border bg-muted/20 p-6 text-sm font-semibold"
+            >
               <span aria-label={i.alt}>{i.label}</span>
             </div>
           ))}

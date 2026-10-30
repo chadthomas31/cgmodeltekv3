@@ -5,7 +5,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "FAQ | About Us | cgmodeltek",
-  description: "Frequently asked questions about cgmodeltek's capabilities, lead times, and quality.",
+  description:
+    "Frequently asked questions about cgmodeltek's capabilities, lead times, and quality.",
 };
 
 export default function Page() {
@@ -41,7 +42,10 @@ export default function Page() {
             <h3 className="headline-3">Have a different question?</h3>
             <p className="text-sm text-muted-foreground">Contact us and we’ll get back quickly.</p>
           </div>
-          <Link href="/contact" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">
+          <Link
+            href="/contact"
+            className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground"
+          >
             Request a Quote
           </Link>
         </div>
@@ -52,9 +56,21 @@ export default function Page() {
         <div className="mt-4">
           <Accordion
             items={[
-              { id: "q1", title: "Do you sign NDAs?", content: "Yes. We can use your NDA or supply ours." },
-              { id: "q2", title: "Supported file types?", content: "STEP, Parasolid, SolidWorks, PDF drawings, and more." },
-              { id: "q3", title: "Quality documentation?", content: "COC/COA, FAI, inspection reports as required." },
+              {
+                id: "q1",
+                title: "Do you sign NDAs?",
+                content: "Yes. We can use your NDA or supply ours.",
+              },
+              {
+                id: "q2",
+                title: "Supported file types?",
+                content: "STEP, Parasolid, SolidWorks, PDF drawings, and more.",
+              },
+              {
+                id: "q3",
+                title: "Quality documentation?",
+                content: "COC/COA, FAI, inspection reports as required.",
+              },
             ]}
           />
         </div>

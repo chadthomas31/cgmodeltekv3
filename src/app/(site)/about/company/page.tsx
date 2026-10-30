@@ -41,9 +41,14 @@ export default function Page() {
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>
             <h3 className="headline-3">Ready to start?</h3>
-            <p className="text-sm text-muted-foreground">Send a model or drawing to get a same-day quote.</p>
+            <p className="text-sm text-muted-foreground">
+              Send a model or drawing to get a same-day quote.
+            </p>
           </div>
-          <Link href="/contact" className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground">
+          <Link
+            href="/contact"
+            className="focus-ring rounded-md bg-primary px-4 py-2 text-primary-foreground"
+          >
             Request a Quote
           </Link>
         </div>
@@ -54,9 +59,21 @@ export default function Page() {
         <div className="mt-4">
           <Accordion
             items={[
-              { id: "capacity", title: "Capacity?", content: "Multi-shift availability with surge options." },
-              { id: "certs", title: "Certifications?", content: "Ask about current certifications and COA formats." },
-              { id: "shipping", title: "Shipping?", content: "North America with global logistics on request." },
+              {
+                id: "capacity",
+                title: "Capacity?",
+                content: "Multi-shift availability with surge options.",
+              },
+              {
+                id: "certs",
+                title: "Certifications?",
+                content: "Ask about current certifications and COA formats.",
+              },
+              {
+                id: "shipping",
+                title: "Shipping?",
+                content: "North America with global logistics on request.",
+              },
             ]}
           />
         </div>

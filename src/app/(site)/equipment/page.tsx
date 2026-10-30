@@ -16,61 +16,61 @@ export default function Page() {
     milling: [
       {
         name: "Haas VF-9",
-        specs: "84\" × 40\" × 30\"",
+        specs: '84" × 40" × 30"',
         image: "/Equipment/Haas_VF-9_84_x_40_x_30.jpeg",
         description: "High-performance vertical machining center",
       },
       {
         name: "Mazak i-700",
-        specs: "24\" × 43\" × 23\"",
+        specs: '24" × 43" × 23"',
         image: "/Equipment/Mazak_i-700_24_x_43_x_23.png",
         description: "Intelligent vertical machining center",
       },
       {
         name: "Cincinnati Lancer",
-        specs: "40\" × 20\" × 21\"",
+        specs: '40" × 20" × 21"',
         image: "/Equipment/Cincinnati _Lancer_40_x_20_x_21.png",
         description: "Precision 3-axis machining center",
       },
       {
         name: "Cincinnati Sabre 1000",
-        specs: "40\" × 20\" × 21\"",
+        specs: '40" × 20" × 21"',
         image: "/Equipment/Cincinnati _Sabre_1000_40_x_20_x_21.png",
         description: "High-precision vertical mill",
       },
       {
         name: "Cincinnati Sabre 2000",
-        specs: "40\" × 20\" × 21\"",
+        specs: '40" × 20" × 21"',
         image: "/Equipment/Cincinnati _Sabre_2000_40_x_20_x_21.png",
         description: "Advanced 3-axis machining",
       },
       {
         name: "Cincinnati U5",
-        specs: "100\" × 156\" × 40\"",
+        specs: '100" × 156" × 40"',
         image: "/Equipment/Cincinnati U5_ 100_x_156_x_40.png",
         description: "Large format 5-axis gantry mill",
       },
       {
         name: "Mazak VTC 250",
-        specs: "69\" × 25\" × 26\"",
+        specs: '69" × 25" × 26"',
         image: "/Equipment/Mazak_VTC_250by50_69_x_25_x_26 - Copy.png",
         description: "Vertical traveling column machining center",
       },
       {
         name: "Milltronics VKM2",
-        specs: "30\" × 15\" × 11\"",
+        specs: '30" × 15" × 11"',
         image: "/Equipment/Milltronics_VKM2_30_x_15_x_11.jpeg",
         description: "Compact vertical machining center",
       },
       {
         name: "Milltronics VKM3",
-        specs: "30\" × 15\" × 11\"",
+        specs: '30" × 15" × 11"',
         image: "/Equipment/Milltronics_VKM3_30_x_15_x_11.jpeg",
         description: "Precision 3-axis mill",
       },
       {
         name: "Milltronics VKM4",
-        specs: "30\" × 15\" × 11\"",
+        specs: '30" × 15" × 11"',
         image: "/Equipment/Milltronics_VKM4_30_x_15_x_11.jpeg",
         description: "High-accuracy machining center",
       },
@@ -78,13 +78,13 @@ export default function Page() {
     fiveAxis: [
       {
         name: "Mazak 730-5X",
-        specs: "33\" × 29\" × 22\"",
+        specs: '33" × 29" × 22"',
         image: "/Equipment/Mazak_730-5X_33_x_29_x_22.png",
         description: "5-axis simultaneous machining center",
       },
       {
         name: "Mazak VCU 400-5X",
-        specs: "20\" × 16\" × 20\"",
+        specs: '20" × 16" × 20"',
         image: "/Equipment/Mazak_VCU_400-5X_20_x_16_x_20.jpeg",
         description: "Compact 5-axis vertical machining center",
       },
@@ -92,25 +92,25 @@ export default function Page() {
     turning: [
       {
         name: "Mazak I-1050T",
-        specs: "47\" × 54\" × 35\"",
+        specs: '47" × 54" × 35"',
         image: "/Equipment/Mazak_I-1050T_47_x_54_x_35.png",
         description: "Multi-tasking turning center",
       },
       {
         name: "Mazak QTN 450",
-        specs: "20\" Dia. × 80\"",
+        specs: '20" Dia. × 80"',
         image: "/Equipment/2-Axis/Mazak_QTN_450_20_Dia._x_80.jpeg",
         description: "2-axis CNC lathe with large capacity",
       },
       {
         name: "Mazak QTN 350M",
-        specs: "16\" Dia. × 48\"",
+        specs: '16" Dia. × 48"',
         image: "/Equipment/3-Axis (live tooling)/Mazak_QTN_350M_16_Dia._x_48.jpeg",
         description: "3-axis turning center with live tooling",
       },
       {
         name: "BridgePort EZ Path II",
-        specs: "10\" Dia. × 36\"",
+        specs: '10" Dia. × 36"',
         image: "/Equipment/2-Axis/BridgePort_EZ_Path_II_10_Dia._x_36.png",
         description: "2-axis CNC lathe",
       },
@@ -118,13 +118,13 @@ export default function Page() {
     edm: [
       {
         name: "Mitsubishi FA20S",
-        specs: "13\" × 19\" × 11.5\"",
+        specs: '13" × 19" × 11.5"',
         image: "/Equipment/4 Axis/Mitsubishi_FA20S_13_x_19_x_11.5.jpeg",
         description: "4-axis Wire EDM with sub-micron precision",
       },
       {
         name: "Mitsubishi DWC90HA",
-        specs: "10\" × 12\" × 6.5\"",
+        specs: '10" × 12" × 6.5"',
         image: "/Equipment/4 Axis/Mitsubishi_DWC90HA_10_x_12_x_6.5.jpeg",
         description: "4-axis Die-Sink EDM for complex cavities",
       },
@@ -284,11 +284,11 @@ export default function Page() {
               <div className="text-sm text-muted-foreground">Simultaneous Machining</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary">±0.0005"</div>
+              <div className="text-3xl font-bold text-primary">±0.0005&quot;</div>
               <div className="text-sm text-muted-foreground">Typical Tolerance</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary">156"</div>
+              <div className="text-3xl font-bold text-primary">156&quot;</div>
               <div className="text-sm text-muted-foreground">Max Travel (Gantry)</div>
             </div>
           </div>

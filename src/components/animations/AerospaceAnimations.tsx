@@ -12,7 +12,12 @@ import { cn } from "@/lib/utils";
  */
 export function OrbitalAnimation({ className }: { className?: string }) {
   return (
-    <div className={cn("w-full h-full bg-gradient-to-br from-indigo-950 via-blue-950 to-black", className)}>
+    <div
+      className={cn(
+        "w-full h-full bg-gradient-to-br from-indigo-950 via-blue-950 to-black",
+        className,
+      )}
+    >
       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="orbitalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -128,7 +133,13 @@ export function GridBlueprintAnimation({ className }: { className?: string }) {
           <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
         </circle>
         <circle cx="80" cy="80" r="0.8" fill="#60a5fa" opacity="0.8">
-          <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" begin="1s" />
+          <animate
+            attributeName="opacity"
+            values="0.8;1;0.8"
+            dur="2s"
+            repeatCount="indefinite"
+            begin="1s"
+          />
         </circle>
 
         {/* Corner brackets */}
@@ -148,7 +159,12 @@ export function GridBlueprintAnimation({ className }: { className?: string }) {
  */
 export function MachiningAnimation({ className }: { className?: string }) {
   return (
-    <div className={cn("w-full h-full bg-gradient-to-br from-slate-900 via-blue-950 to-black", className)}>
+    <div
+      className={cn(
+        "w-full h-full bg-gradient-to-br from-slate-900 via-blue-950 to-black",
+        className,
+      )}
+    >
       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="machineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -203,10 +219,21 @@ export function MachiningAnimation({ className }: { className?: string }) {
         {/* Measurement lines */}
         <g stroke="#3b82f6" strokeWidth="0.3" opacity="0.4">
           <line x1="30" y1="50" x2="40" y2="50" strokeDasharray="1 1">
-            <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="0.4;0.8;0.4"
+              dur="3s"
+              repeatCount="indefinite"
+            />
           </line>
           <line x1="60" y1="50" x2="70" y2="50" strokeDasharray="1 1">
-            <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" begin="1.5s" />
+            <animate
+              attributeName="opacity"
+              values="0.4;0.8;0.4"
+              dur="3s"
+              repeatCount="indefinite"
+              begin="1.5s"
+            />
           </line>
         </g>
 
@@ -237,7 +264,12 @@ export function MachiningAnimation({ className }: { className?: string }) {
  */
 export function DigitalWavesAnimation({ className }: { className?: string }) {
   return (
-    <div className={cn("w-full h-full bg-gradient-to-br from-cyan-950 via-blue-950 to-black", className)}>
+    <div
+      className={cn(
+        "w-full h-full bg-gradient-to-br from-cyan-950 via-blue-950 to-black",
+        className,
+      )}
+    >
       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
         <defs>
           <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -271,21 +303,16 @@ export function DigitalWavesAnimation({ className }: { className?: string }) {
 
         {/* Floating data points */}
         {[...Array(15)].map((_, i) => (
-          <circle
-            key={i}
-            r="0.8"
-            fill="#06b6d4"
-            opacity="0.6"
-          >
+          <circle key={i} r="0.8" fill="#06b6d4" opacity="0.6">
             <animate
               attributeName="cx"
-              values={`${(i * 10) % 100};${((i * 10) + 100) % 100}`}
+              values={`${(i * 10) % 100};${(i * 10 + 100) % 100}`}
               dur={`${8 + i * 0.5}s`}
               repeatCount="indefinite"
             />
             <animate
               attributeName="cy"
-              values={`${40 + (i * 3) % 20};${60 + (i * 3) % 20};${40 + (i * 3) % 20}`}
+              values={`${40 + ((i * 3) % 20)};${60 + ((i * 3) % 20)};${40 + ((i * 3) % 20)}`}
               dur={`${5 + i * 0.3}s`}
               repeatCount="indefinite"
             />

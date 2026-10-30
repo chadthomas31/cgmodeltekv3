@@ -22,9 +22,7 @@ export default function GlobalError({
             <p className="mb-6 text-gray-600">
               A critical error occurred. Please try refreshing the page.
             </p>
-            {error.digest && (
-              <p className="mb-4 text-sm text-gray-500">Error ID: {error.digest}</p>
-            )}
+            {error.digest && <p className="mb-4 text-sm text-gray-500">Error ID: {error.digest}</p>}
             <button
               onClick={reset}
               className="rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"

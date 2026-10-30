@@ -65,10 +65,22 @@ export function FlowAnimation({
           </linearGradient>
 
           {/* Flowing pattern */}
-          <pattern id="flowPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+          <pattern
+            id="flowPattern"
+            x="0"
+            y="0"
+            width="200"
+            height="200"
+            patternUnits="userSpaceOnUse"
+          >
             {pattern === "arrows" && (
               <g fill="url(#flowGradient)">
-                <path d="M 50 50 L 70 50 L 60 40 M 70 50 L 60 60" strokeWidth="2" stroke="url(#flowGradient)" fill="none">
+                <path
+                  d="M 50 50 L 70 50 L 60 40 M 70 50 L 60 60"
+                  strokeWidth="2"
+                  stroke="url(#flowGradient)"
+                  fill="none"
+                >
                   <animateTransform
                     attributeName="transform"
                     type="translate"
@@ -78,7 +90,12 @@ export function FlowAnimation({
                     repeatCount="indefinite"
                   />
                 </path>
-                <path d="M 150 150 L 170 150 L 160 140 M 170 150 L 160 160" strokeWidth="2" stroke="url(#flowGradient)" fill="none">
+                <path
+                  d="M 150 150 L 170 150 L 160 140 M 170 150 L 160 160"
+                  strokeWidth="2"
+                  stroke="url(#flowGradient)"
+                  fill="none"
+                >
                   <animateTransform
                     attributeName="transform"
                     type="translate"

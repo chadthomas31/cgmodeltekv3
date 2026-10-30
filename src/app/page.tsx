@@ -1,5 +1,4 @@
 import { FxHero } from "@/components/sections/FxHero";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -28,19 +27,45 @@ export default function Home() {
         ctaSecondary={{ label: "Contact Us", href: "/contact" }}
         titleClassName="font-sans font-semibold tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
         teamMembers={[
-          { name: "Chris Athaide", role: "Founder & CEO", img: "/Leadership/Chris_Athaide.png", bio: "" },
+          {
+            name: "Chris Athaide",
+            role: "Founder & CEO",
+            img: "/Leadership/Chris_Athaide.png",
+            bio: "",
+          },
           { name: "Naresh Kumar", role: "Chief Financial Officer", img: "", bio: "" },
           { name: "Tony Boyce", role: "Title", img: "", bio: "" },
-          { name: "Ian Watts", role: "IT & Information Security Leader", img: "/Leadership/Ian_Watts.Info.sec.ofc.png", bio: "" },
-          { name: "John M. Nichols", role: "Executive Advisor", img: "/Leadership/John_Nichols.png", bio: "" },
-          { name: "John Statum", role: "Vice President of Operations", img: "/Leadership/john_statum.png", bio: "" },
-          { name: "Larry Phelps", role: "Shop Supervisor", img: "/Leadership/larry_phelps.png", bio: "" },
+          {
+            name: "Ian Watts",
+            role: "IT & Information Security Leader",
+            img: "/Leadership/Ian_Watts.Info.sec.ofc.png",
+            bio: "",
+          },
+          {
+            name: "John M. Nichols",
+            role: "Executive Advisor",
+            img: "/Leadership/John_Nichols.png",
+            bio: "",
+          },
+          {
+            name: "John Statum",
+            role: "Vice President of Operations",
+            img: "/Leadership/john_statum.png",
+            bio: "",
+          },
+          {
+            name: "Larry Phelps",
+            role: "Shop Supervisor",
+            img: "/Leadership/larry_phelps.png",
+            bio: "",
+          },
           { name: "John Hill", role: "Quality Manager", img: "/Leadership/john_hill.png", bio: "" },
         ]}
         cards={[
           {
             title: "About Us",
-            description: "Engineers. Innovators. Makers. At CG Model Tek, precision isn’t a goal — it’s our foundation. From aerospace models to complex CNC components, our team transforms ideas into flight-ready reality.",
+            description:
+              "Engineers. Innovators. Makers. At CG Model Tek, precision isn’t a goal — it’s our foundation. From aerospace models to complex CNC components, our team transforms ideas into flight-ready reality.",
             href: "/about",
             cta: "Learn more",
             colorClass: "text-white/95",
@@ -49,7 +74,8 @@ export default function Home() {
           },
           {
             title: "Services",
-            description: "From concept design to final machining — we deliver complete precision manufacturing solutions. CNC Milling · Turning · Rapid Prototyping · 3D Modeling · Surface Finishing · Assembly",
+            description:
+              "From concept design to final machining — we deliver complete precision manufacturing solutions. CNC Milling · Turning · Rapid Prototyping · 3D Modeling · Surface Finishing · Assembly",
             href: "/services",
             cta: "Explore services",
             colorClass: "text-white/95",
@@ -58,7 +84,8 @@ export default function Home() {
           },
           {
             title: "Aerospace Excellence",
-            description: "Precision wind tunnel models, flight test components, and aerospace manufacturing with full traceability and documentation for demanding applications.",
+            description:
+              "Precision wind tunnel models, flight test components, and aerospace manufacturing with full traceability and documentation for demanding applications.",
             href: "/aerospace",
             cta: "Our expertise",
             colorClass: "bg-gradient-to-br from-blue-500 via-sky-500 to-blue-600 text-white",

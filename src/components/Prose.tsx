@@ -1,7 +1,13 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-export function Prose({ className = "", children }: { className?: string; children: React.ReactNode }) {
+export function Prose({
+  className = "",
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div
       className={cn(
@@ -13,7 +19,7 @@ export function Prose({ className = "", children }: { className?: string; childr
         "[&_p]:leading-relaxed [&_p]:my-4 text-muted-foreground",
         "[&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6",
         "[&_a]:text-accent hover:[&_a]:underline",
-        className
+        className,
       )}
     >
       {children}
