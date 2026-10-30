@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import "../styles/cgmodeltek_slider_user.css";
 import { ThemeProvider } from "@/lib/theme-provider";
@@ -8,20 +7,6 @@ import Footer from "@/components/(layout)/Footer";
 import { Header } from "@/components/layout/Header";
 import { MainWrapper } from "@/components/layout/MainWrapper";
 import { OrganizationSchema } from "@/components/StructuredData";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-  fallback: ["system-ui", "arial"],
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  display: "swap",
-  fallback: ["system-ui", "arial"],
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -66,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased min-h-dvh bg-background text-foreground bg-schematic bg-schematic-vignette`}
+        className="antialiased min-h-dvh bg-background text-foreground bg-schematic bg-schematic-vignette"
       >
         <OrganizationSchema siteUrl={siteUrl} />
         <SiteBackground />
