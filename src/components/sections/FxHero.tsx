@@ -116,22 +116,25 @@ export function FxHero({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="text-center mb-12 sm:mb-16 lg:mb-20 max-w-6xl mx-auto">
           {heroLogoSrc && (
-            <div className="mb-4 sm:mb-6 flex justify-center">
-              <Image
-                src={heroLogoSrc}
-                alt="Site Logo"
-                width={800}
-                height={200}
-                priority
-                className={
-                  (heroLogoClass?.trim() || "h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36") +
-                  " w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
-                }
-              />
+            <div className="mb-6 sm:mb-8 flex justify-center opacity-0 animate-fade-in">
+              <div className="relative animate-float">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF8200] to-[#4ECDC4] rounded-full blur-2xl opacity-30" />
+                <Image
+                  src={heroLogoSrc}
+                  alt="Site Logo"
+                  width={800}
+                  height={200}
+                  priority
+                  className={
+                    (heroLogoClass?.trim() || "h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36") +
+                    " relative w-auto object-contain drop-shadow-[0_4px_20px_rgba(255,130,0,0.4)]"
+                  }
+                />
+              </div>
             </div>
           )}
           {eyebrow && (
-            <p className="text-sm sm:text-base text-gray-400 uppercase tracking-wider mb-6 font-light">
+            <p className="text-sm sm:text-base text-white/60 uppercase tracking-[0.2em] mb-6 font-medium opacity-0 animate-slide-up delay-100">
               {eyebrow}
             </p>
           )}
@@ -139,41 +142,46 @@ export function FxHero({
             <h1
               className={cn(
                 titleClassName ??
-                  "text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light",
-                "leading-[0.95] tracking-tight text-white",
+                  "text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold",
+                "leading-[0.95] tracking-tight text-white text-glow-white opacity-0 animate-slide-up delay-200",
               )}
             >
               {title}
             </h1>
           )}
           {subtitleBanner?.trim() && (
-            <div className="mt-5 mx-auto w-full max-w-[1400px] px-4 text-center text-lg sm:text-2xl md:text-3xl font-semibold text-white">
-              {subtitleBanner}
+            <div className="mt-6 mx-auto w-full max-w-[1400px] px-4 text-center text-lg sm:text-2xl md:text-3xl font-semibold text-white/90 opacity-0 animate-slide-up delay-300">
+              <div className="inline-block glass-dark px-8 py-4 rounded-2xl">
+                {subtitleBanner}
+              </div>
             </div>
           )}
           {badgeText?.trim() && (
-            <div className="mt-3 flex justify-center">
-              <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+            <div className="mt-4 flex justify-center opacity-0 animate-slide-up delay-400">
+              <span className="inline-flex items-center rounded-full glass px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-lg glow-orange">
+                <span className="mr-2 h-2 w-2 bg-[#4ECDC4] rounded-full animate-pulse" />
                 {badgeText}
               </span>
             </div>
           )}
           {(ctaPrimary || ctaSecondary) && (
-            <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 px-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 px-4 opacity-0 animate-slide-up delay-500">
               {ctaPrimary && (
                 <Link
                   href={ctaPrimary.href}
-                  className="inline-flex items-center justify-center rounded-full bg-white text-black px-5 py-2.5 text-sm font-semibold hover:bg-white/90 w-full sm:w-auto"
+                  className="group inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#FF8200] to-[#FF6B35] text-white px-8 py-4 text-base font-bold shadow-xl hover:shadow-[0_0_40px_rgba(255,130,0,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto"
                 >
                   {ctaPrimary.label}
+                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Link>
               )}
               {ctaSecondary && (
                 <Link
                   href={ctaSecondary.href}
-                  className="inline-flex items-center justify-center rounded-full border border-white/30 text-white px-5 py-2.5 text-sm font-semibold hover:bg-white/10 w-full sm:w-auto"
+                  className="group inline-flex items-center justify-center rounded-full glass border-2 border-white/30 text-white px-8 py-4 text-base font-semibold hover:border-white/60 hover:bg-white/10 transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto"
                 >
                   {ctaSecondary.label}
+                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Link>
               )}
             </div>
@@ -181,45 +189,65 @@ export function FxHero({
         </div>
 
         <div className="max-w-[1400px] mx-auto" onMouseLeave={() => setActive(null)}>
-          <div className="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {cards.map((card, index) => (
               <div
                 key={card.title}
                 className={cn(
-                  "group relative overflow-hidden rounded-2xl border-2 shadow-xl transition-all duration-300 min-h-[360px] sm:min-h-[460px] lg:min-h-[520px] hover:border-orange-400",
+                  "group relative overflow-hidden rounded-3xl transition-all duration-500 min-h-[360px] sm:min-h-[460px] lg:min-h-[520px]",
+                  "hover:scale-[1.02] hover:shadow-2xl",
+                  "opacity-0 animate-slide-up",
+                  index === 0 && "delay-100",
+                  index === 1 && "delay-200",
+                  index === 2 && "delay-300",
                   card.colorClass,
                 )}
                 onMouseEnter={() => setActive(card.title)}
               >
+                {/* Glow effect on hover */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FF8200] to-[#4ECDC4] rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
+
                 {card.imageSrc && (
                   <Image
                     src={card.imageSrc}
                     alt={card.imageAlt || card.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                     priority={index < 3}
                   />
                 )}
                 {!card.bareImage && (
                   <>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-100 transition-opacity duration-300 pointer-events-none" />
-                    <div className="flex h-full flex-col justify-end p-3 sm:p-4">
-                      <div className="mx-auto mb-1 w-full max-w-sm space-y-2 rounded-lg bg-black/35 backdrop-blur-sm p-3 sm:p-3 border border-white/5">
-                        <h3 className="text-center text-xl sm:text-2xl font-semibold tracking-tight text-white drop-shadow">
+                    {/* Enhanced gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500 pointer-events-none" />
+
+                    {/* Glassmorphism card */}
+                    <div className="flex h-full flex-col justify-end p-4 sm:p-6">
+                      <div className="relative mx-auto mb-2 w-full max-w-sm space-y-3 rounded-2xl glass-dark p-4 sm:p-5 transform transition-all duration-500 group-hover:translate-y-[-8px]">
+                        {/* Accent border glow */}
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#FF8200]/30 to-[#4ECDC4]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
+
+                        <h3 className="relative text-center text-2xl sm:text-3xl font-bold tracking-tight text-white text-glow-white">
                           {card.title}
                         </h3>
-                        <div className="pt-2">
+                        <p className="relative text-center text-sm sm:text-base text-white/80 line-clamp-2">
+                          {card.description}
+                        </p>
+                        <div className="relative pt-2 flex justify-center">
                           <Link
                             href={card.href}
                             className={cn(
-                              "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium",
-                              "border-2 transition-all duration-250",
-                              "hover:bg-black/20 hover:scale-105",
+                              "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold",
+                              "bg-gradient-to-r from-[#FF8200] to-[#FF6B35] text-white",
+                              "border border-white/20 shadow-lg",
+                              "transition-all duration-300",
+                              "hover:shadow-[0_0_30px_rgba(255,130,0,0.6)] hover:scale-105 hover:border-white/40",
+                              "active:scale-95",
                             )}
                           >
                             {card.cta ?? "Launch"}
-                            <span aria-hidden className="text-lg">
+                            <span aria-hidden className="text-lg transition-transform duration-300 group-hover:translate-x-1">
                               →
                             </span>
                           </Link>
@@ -235,23 +263,23 @@ export function FxHero({
           {/* Dropdown panel under cards */}
           <div
             className={cn(
-              "mx-auto mt-4 w-full max-w-[1400px] overflow-hidden rounded-2xl border",
-              "transition-all duration-500 ease-in-out",
-              active ? "h-[50vh] opacity-100" : "h-0 opacity-0 pointer-events-none",
+              "mx-auto mt-6 w-full max-w-[1400px] overflow-hidden rounded-3xl",
+              "transition-all duration-700 ease-in-out",
+              active ? "h-[50vh] opacity-100 scale-100" : "h-0 opacity-0 scale-95 pointer-events-none",
             )}
             aria-hidden={!active}
           >
-            <div className="relative h-full bg-black/50 backdrop-blur-sm">
-              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-transparent" />
+            <div className="relative h-full glass-dark shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-b from-[#FF8200]/10 via-transparent to-[#4ECDC4]/10" />
               <div className="relative z-10 h-full p-6 sm:p-8">
-                <div className="mb-4 flex items-center justify-between">
-                  <h4 className="text-xl font-semibold">{active ?? ""}</h4>
+                <div className="mb-6 flex items-center justify-between">
+                  <h4 className="text-2xl font-bold text-white">{active ?? ""}</h4>
                   <button
-                    className="rounded-md bg-white/10 px-3 py-1 text-sm hover:bg-white/20"
+                    className="rounded-full glass px-4 py-2 text-sm font-semibold hover:bg-white/20 transition-all duration-300 hover:scale-105"
                     onClick={() => setActive(null)}
                     aria-label="Close section"
                   >
-                    Close
+                    ✕ Close
                   </button>
                 </div>
                 {active === "About Us" && teamMembers && teamMembers.length > 0 ? (

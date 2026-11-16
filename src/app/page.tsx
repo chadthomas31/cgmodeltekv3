@@ -2,18 +2,23 @@ import { FxHero } from "@/components/sections/FxHero";
 
 export default function Home() {
   return (
-    <main className="relative">
-      {/* Page-local orange background overlay */}
+    <main className="relative overflow-hidden">
+      {/* Dynamic Gradient Mesh Background */}
       <div aria-hidden className="pointer-events-none fixed inset-0 z-20">
-        {/* Tennessee orange base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FFA64D] via-[#FF8200] to-[#CC6A00]" />
-        {/* transparent grid overlay (stronger) */}
-        <div className="absolute inset-0 bg-hero-grid opacity-60" />
-        {/* plane schematics overlay */}
-        <div className="absolute inset-0 bg-hero-schematics opacity-25" />
-        {/* starfield image removed to avoid blue tint */}
-        {/* subtle depth vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/20" />
+        {/* Animated gradient mesh */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35] via-[#FF8200] to-[#F97068] opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-tl from-[#4ECDC4]/30 via-transparent to-[#44A08D]/20 animate-gradient-slow" />
+
+        {/* Glowing orbs for depth */}
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-[#FF8200] rounded-full blur-[128px] opacity-30 animate-pulse-slow" />
+        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#4ECDC4] rounded-full blur-[128px] opacity-20 animate-pulse-slower" />
+
+        {/* Enhanced grid with glow */}
+        <div className="absolute inset-0 bg-hero-grid opacity-40" />
+        <div className="absolute inset-0 bg-hero-schematics opacity-15" />
+
+        {/* Radial gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-black/5 to-black/30" />
       </div>
       <FxHero
         className="relative z-30"
