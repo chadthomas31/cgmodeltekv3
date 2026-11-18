@@ -11,43 +11,46 @@ export default function AerospaceSlider() {
 
   // TODO: Replace with actual local images from /public/images
   // These external URLs should be replaced with optimized local assets
-  const cards = useMemo(() => [
-    {
-      title: "Designers",
-      desc: "Tools that work like you do.",
-      bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/designers.webp",
-      thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-designer.webp?w=480",
-      btn: "Details",
-    },
-    {
-      title: "Marketers",
-      desc: "Create faster, explore new possibilities.",
-      bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/marketers.webp",
-      thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-marketer.webp?w=480",
-      btn: "Details",
-    },
-    {
-      title: "VFX filmmakers",
-      desc: "From concept to cut, faster.",
-      bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/filmmakers.webp",
-      thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-film.webp?w=480",
-      btn: "Details",
-    },
-    {
-      title: "Content creators",
-      desc: "Make scroll-stopping content, easily.",
-      bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/content-creators.webp",
-      thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-content.webp?w=480",
-      btn: "Details",
-    },
-    {
-      title: "Art directors",
-      desc: "Creative control at every stage.",
-      bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/art-directors.webp",
-      thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-art.webp?w=480",
-      btn: "Details",
-    },
-  ], []);
+  const cards = useMemo(
+    () => [
+      {
+        title: "Designers",
+        desc: "Tools that work like you do.",
+        bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/designers.webp",
+        thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-designer.webp?w=480",
+        btn: "Details",
+      },
+      {
+        title: "Marketers",
+        desc: "Create faster, explore new possibilities.",
+        bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/marketers.webp",
+        thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-marketer.webp?w=480",
+        btn: "Details",
+      },
+      {
+        title: "VFX filmmakers",
+        desc: "From concept to cut, faster.",
+        bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/filmmakers.webp",
+        thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-film.webp?w=480",
+        btn: "Details",
+      },
+      {
+        title: "Content creators",
+        desc: "Make scroll-stopping content, easily.",
+        bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/content-creators.webp",
+        thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-content.webp?w=480",
+        btn: "Details",
+      },
+      {
+        title: "Art directors",
+        desc: "Creative control at every stage.",
+        bg: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/art-directors.webp",
+        thumb: "https://cdn-front.freepik.com/home/anon-rvmp/professionals/img-art.webp?w=480",
+        btn: "Details",
+      },
+    ],
+    [],
+  );
 
   const isMobile = () =>
     typeof window !== "undefined" && window.matchMedia("(max-width:767px)").matches;
@@ -162,7 +165,9 @@ export default function AerospaceSlider() {
             <article
               key={card.title}
               className="project-card"
-              ref={(el) => { cardRefs.current[i] = el; }}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
               data-active={i === 0 ? "" : undefined}
               onMouseEnter={() => {
                 if (typeof window !== "undefined" && window.matchMedia("(hover:hover)").matches) {
@@ -171,9 +176,19 @@ export default function AerospaceSlider() {
               }}
               onClick={() => activate(i, true)}
             >
-              <img className="project-card__bg" src={card.bg} alt={`${card.title} background`} />
+              <img
+                className="project-card__bg"
+                src={card.bg}
+                alt={`${card.title} background`}
+                loading="lazy"
+              />
               <div className="project-card__content">
-                <img className="project-card__thumb" src={card.thumb} alt={card.title} />
+                <img
+                  className="project-card__thumb"
+                  src={card.thumb}
+                  alt={card.title}
+                  loading="lazy"
+                />
                 <div>
                   <h3 className="project-card__title">{card.title}</h3>
                   <p className="project-card__desc">{card.desc}</p>
@@ -191,13 +206,13 @@ export default function AerospaceSlider() {
           {cards.map((_, i) => (
             <span
               key={i}
-              className={`dot ${i === current ? 'active' : ''}`}
+              className={`dot ${i === current ? "active" : ""}`}
               onClick={() => activate(i, true)}
               role="button"
               tabIndex={0}
               aria-label={`Go to slide ${i + 1}`}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
                   activate(i, true);
                 }

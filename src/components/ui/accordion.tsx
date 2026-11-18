@@ -15,7 +15,9 @@ export function Accordion({ items }: { items: Item[] }) {
           >
             {it.title}
           </button>
-          {open === it.id && <div className="px-4 pb-4 text-sm text-muted-foreground">{it.content}</div>}
+          {open === it.id && (
+            <div className="px-4 pb-4 text-sm text-muted-foreground">{it.content}</div>
+          )}
         </div>
       ))}
     </div>

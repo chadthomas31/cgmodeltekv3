@@ -5,13 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -24,11 +18,7 @@ const navLinks = [
 ];
 
 export function Header() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
-  // Hide header on RFQ pages
-  if (pathname && pathname.startsWith("/rfq")) return null;
 
   return (
     <nav className="fixed top-0 inset-x-0 z-50">
@@ -41,18 +31,14 @@ export function Header() {
               width={520}
               height={104}
               priority
-              className="mt-2 h-16 sm:h-24 md:h-32 lg:h-40 w-auto object-contain"
+              className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="ml-auto hidden sm:flex items-center gap-4 sm:gap-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="hover:underline underline-offset-4"
-              >
+              <Link key={link.href} href={link.href} className="hover:underline underline-offset-4">
                 {link.label}
               </Link>
             ))}

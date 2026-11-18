@@ -41,14 +41,16 @@ export function AerospaceServicesGrid() {
   const services = [
     {
       title: "Prototype Development",
-      description: "Rapid prototyping with precision aerospace tolerances. From CAD to physical parts in days.",
+      description:
+        "Rapid prototyping with precision aerospace tolerances. From CAD to physical parts in days.",
       href: "/services/prototyping",
       cta: "Learn More",
       animation: <OrbitalAnimation />,
     },
     {
       title: "CNC Machining",
-      description: "5-axis CNC capabilities for aerospace-grade materials including titanium and Inconel.",
+      description:
+        "5-axis CNC capabilities for aerospace-grade materials including titanium and Inconel.",
       href: "/services/cnc-machining",
       cta: "View Equipment",
       animation: <MachiningAnimation />,
@@ -62,7 +64,8 @@ export function AerospaceServicesGrid() {
     },
     {
       title: "Production Manufacturing",
-      description: "Scale from prototype to production with consistent quality. AS9100 certified processes.",
+      description:
+        "Scale from prototype to production with consistent quality. AS9100 certified processes.",
       href: "/services/production",
       cta: "See Capabilities",
       animation: <DigitalWavesAnimation />,
@@ -163,9 +166,7 @@ export function FullLandingPageExample() {
       {/* Additional Content */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-light text-white mb-4">
-            Ready to start your next project?
-          </h2>
+          <h2 className="text-3xl font-light text-white mb-4">Ready to start your next project?</h2>
           <button className="mt-6 px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-colors">
             Get a Quote
           </button>

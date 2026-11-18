@@ -1,12 +1,18 @@
 "use server";
 
-export async function submitRFQ(prevState: any, formData: FormData) {
+type RFQFormState = { success: boolean; error?: string; message?: string } | null;
+
+export async function submitRFQ(
+  prevState: RFQFormState,
+  formData: FormData,
+): Promise<RFQFormState> {
   // Extract form data
   const data = {
     name: formData.get("name") as string,
     email: formData.get("email") as string,
     phone: formData.get("phone") as string,
     company: formData.get("company") as string,
+    service: formData.get("service") as string,
     title: formData.get("title") as string,
     details: formData.get("details") as string,
     timeline: formData.get("timeline") as string,
